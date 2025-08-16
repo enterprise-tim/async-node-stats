@@ -63,12 +63,12 @@ async function main() {
     // Execute the target script with compatible flags
     const { spawn } = await import('child_process');
     
-    const child = spawn('node', [targetScript, ...scriptArgs], {
+    // Split flags string and pass them directly to node command
+    const flagsArray = flagsString.split(' ').filter(flag => flag.trim());
+    
+    const child = spawn('node', [...flagsArray, targetScript, ...scriptArgs], {
       stdio: 'inherit',
-      env: {
-        ...process.env,
-        NODE_OPTIONS: flagsString
-      }
+      env: process.env
     });
     
     child.on('exit', (code) => {

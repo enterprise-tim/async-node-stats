@@ -5,6 +5,8 @@
  * based on the specific Node.js version being used.
  */
 
+import os from 'os';
+
 /**
  * Get optimization flags compatible with the current Node.js version
  * @returns {Object} Object containing compatible flags and metadata
@@ -43,31 +45,17 @@ export function getCompatibleFlags() {
     }
   };
 
-  // Add version-specific flags
+  // Add version-specific flags (conservative approach for compatibility)
   if (major >= 18) {
     flags.versionSpecific.push('--max-semi-space-size=4096');
-    flags.versionSpecific.push('--initial-heap-size=8192');
   }
   
   if (major >= 20) {
-    flags.versionSpecific.push('--gc-interval=100000');
     flags.versionSpecific.push('--no-compilation-cache');
   }
-  
-  if (major >= 22) {
-    flags.versionSpecific.push('--predictable');
-    flags.versionSpecific.push('--single-threaded-gc');
-  }
-  
-  if (major >= 24) {
-    flags.versionSpecific.push('--harmony-import-assertions');
-    flags.versionSpecific.push('--experimental-async-context');
-  }
 
-  // Add experimental flags for newer versions
-  if (major >= 21) {
-    flags.experimental.push('--experimental-gc-profiler');
-  }
+  // Experimental flags disabled for compatibility
+  // flags.experimental remains empty
 
   return flags;
 }
@@ -166,12 +154,12 @@ export function getSystemInfo() {
     opensslVersion: process.versions.openssl,
     zlibVersion: process.versions.zlib,
     uvVersion: process.versions.uv,
-    cpus: require('os').cpus().length,
-    totalMemory: require('os').totalmem(),
-    freeMemory: require('os').freemem(),
-    uptime: require('os').uptime(),
-    hostname: require('os').hostname(),
-    userInfo: require('os').userInfo(),
+    cpus: os.cpus().length,
+    totalMemory: os.totalmem(),
+    freeMemory: os.freemem(),
+    uptime: os.uptime(),
+    hostname: os.hostname(),
+    userInfo: os.userInfo(),
     env: {
       NODE_ENV: process.env.NODE_ENV,
       NODE_OPTIONS: process.env.NODE_OPTIONS,
