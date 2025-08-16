@@ -14,17 +14,17 @@ The benchmark workflow has been optimized to:
 
 ### 1. Node.js Memory Management
 
-**Important Note**: Some Node.js flags cannot be used in `NODE_OPTIONS` environment variable due to security restrictions in GitHub Actions. These flags are applied directly in the npm scripts instead.
+**Important Note**: Most Node.js optimization flags cannot be used in `NODE_OPTIONS` environment variable due to security restrictions in GitHub Actions. These flags are applied directly in the npm scripts instead.
 
 ```bash
-# Flags used in NODE_OPTIONS (environment variable)
+# Flags used in NODE_OPTIONS (environment variable) - SAFE
 --max-old-space-size=16384        # 16GB heap (4x increase from default)
+
+# Flags used in npm scripts (cannot be in NODE_OPTIONS) - RESTRICTED
 --max-semi-space-size=4096        # 4GB new generation (reduces GC frequency)
 --initial-heap-size=8192          # 8GB initial heap (reduces resizing)
 --optimize-for-size=false         # Optimize for performance, not memory
 --gc-interval=100000              # GC every 100k allocations (reduces GC frequency)
-
-# Flags used in npm scripts (cannot be in NODE_OPTIONS)
 --expose-gc                       # Enable manual GC control (security-sensitive)
 --no-compilation-cache            # Disable compilation cache for consistency
 --predictable                     # Enable predictable mode for consistent results
@@ -68,10 +68,22 @@ NODE_OPTIONS=<optimized_flags>    # All Node.js optimization flags
 
 The GitHub Actions workflow now includes:
 
-1. **Optimized Node.js flags** in all benchmark steps
-2. **Environment variables** for consistent optimization
-3. **Resource monitoring** and cleanup between runs
-4. **Warmup phase** before actual measurements
+1. **Safe Node.js flags** in environment variables (`--max-old-space-size=16384`)
+2. **Advanced optimization flags** applied directly in npm scripts
+3. **Environment variables** for consistent optimization
+4. **Resource monitoring** and cleanup between runs
+5. **Warmup phase** before actual measurements
+
+### Current Optimization Strategy
+
+Due to GitHub Actions restrictions, we use a two-tier approach:
+
+1. **Environment Variables** (Safe flags):
+   - `NODE_OPTIONS="--max-old-space-size=16384"`
+
+2. **NPM Scripts** (Advanced flags):
+   - All other optimization flags are applied directly in package.json scripts
+   - This ensures all optimizations are still active despite environment restrictions
 
 ### Script Optimizations
 
@@ -161,17 +173,17 @@ Updated npm scripts with optimized flags:
 **Solution**: Security-sensitive flags like `--expose-gc` are applied directly in the npm scripts, while performance flags are set via `NODE_OPTIONS`.
 
 **Flags that CAN be in NODE_OPTIONS**:
-- `--max-old-space-size=16384`
-- `--max-semi-space-size=4096`
-- `--initial-heap-size=8192`
-- `--optimize-for-size=false`
-- `--gc-interval=100000`
+- `--max-old-space-size=16384` (heap size - safe)
 
 **Flags that CANNOT be in NODE_OPTIONS**:
+- `--max-semi-space-size=4096` (generation size - restricted)
+- `--initial-heap-size=8192` (initial heap - restricted)
+- `--optimize-for-size=false` (optimization - restricted)
+- `--gc-interval=100000` (GC frequency - restricted)
 - `--expose-gc` (security-sensitive)
-- `--no-compilation-cache`
-- `--predictable`
-- `--single-threaded-gc`
+- `--no-compilation-cache` (compilation - restricted)
+- `--predictable` (predictable mode - restricted)
+- `--single-threaded-gc` (GC threading - restricted)
 
 ### Common Issues
 

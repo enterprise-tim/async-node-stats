@@ -111,7 +111,7 @@ jobs:
     - name: Run multi-iteration benchmarks
       env:
         NODE_VERSION: ${{ matrix.node-version }}
-        NODE_OPTIONS: "--max-old-space-size=16384 --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000"
+        NODE_OPTIONS: "--max-old-space-size=16384"
         UV_THREADPOOL_SIZE: "8"
         NODE_ENV: "production"
       run: |
@@ -134,7 +134,7 @@ jobs:
     - name: Run memory profiling tests
       if: ${{ github.event.inputs.run_memory_tests != 'false' }}
       env:
-        NODE_OPTIONS: "--max-old-space-size=16384 --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000"
+        NODE_OPTIONS: "--max-old-space-size=16384"
         UV_THREADPOOL_SIZE: "8"
         NODE_ENV: "production"
       run: |
@@ -269,7 +269,7 @@ jobs:
     - name: Set Node.js optimizations
       run: |
         echo "🔧 Setting Node.js optimization environment variables..."
-        echo "NODE_OPTIONS=--max-old-space-size=16384 --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000" >> $GITHUB_ENV
+        echo "NODE_OPTIONS=--max-old-space-size=16384" >> $GITHUB_ENV
         echo "UV_THREADPOOL_SIZE=8" >> $GITHUB_ENV
         echo "NODE_ENV=production" >> $GITHUB_ENV
     
