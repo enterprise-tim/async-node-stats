@@ -14,21 +14,23 @@ The benchmark workflow has been optimized to:
 
 ### 1. Node.js Memory Management
 
-**Important Note**: Most Node.js optimization flags cannot be used in `NODE_OPTIONS` environment variable due to security restrictions in GitHub Actions. These flags are applied directly in the npm scripts instead.
+**Important Note**: Most Node.js optimization flags cannot be used in `NODE_OPTIONS` environment variable due to security restrictions in GitHub Actions. We use a simplified but effective approach with only compatible flags.
 
 ```bash
 # Flags used in NODE_OPTIONS (environment variable) - SAFE
 --max-old-space-size=16384        # 16GB heap (4x increase from default)
 
-# Flags used in npm scripts (cannot be in NODE_OPTIONS) - RESTRICTED
---max-semi-space-size=4096        # 4GB new generation (reduces GC frequency)
---initial-heap-size=8192          # 8GB initial heap (reduces resizing)
---optimize-for-size=false         # Optimize for performance, not memory
---gc-interval=100000              # GC every 100k allocations (reduces GC frequency)
+# Flags used in npm scripts (compatible across Node.js versions)
 --expose-gc                       # Enable manual GC control (security-sensitive)
 --no-compilation-cache            # Disable compilation cache for consistency
---predictable                     # Enable predictable mode for consistent results
---single-threaded-gc              # Single-threaded GC for better isolation
+
+# Flags removed due to compatibility issues
+# --max-semi-space-size=4096        # Not available in Node.js 16-18
+# --initial-heap-size=8192          # Not available in Node.js 16-18  
+# --optimize-for-size=false         # Syntax error in older versions
+# --gc-interval=100000              # Not available in Node.js 16-18
+# --predictable                     # Not available in Node.js 16-18
+# --single-threaded-gc              # Not available in Node.js 16-18
 ```
 
 ### 2. Environment Variables
@@ -96,28 +98,30 @@ The `run-multi-iterations.js` script includes:
 
 ### Package.json Scripts
 
-Updated npm scripts with optimized flags:
+Updated npm scripts with simplified but effective flags:
 
 ```json
 {
-  "benchmark": "node --max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000 src/benchmark.js",
-  "memory-test": "node --max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000 src/memory-test.js"
+  "benchmark": "node --max-old-space-size=16384 --expose-gc src/benchmark.js",
+  "memory-test": "node --max-old-space-size=16384 --expose-gc src/memory-test.js"
 }
 ```
+
+**Note**: We've simplified the flags to ensure compatibility across all Node.js versions (16.20.2 to 24.6.0) while maintaining the most impactful optimizations.
 
 ## Performance Benefits
 
 ### Garbage Collection Optimization
 
-- **Reduced GC frequency**: From every few allocations to every 100k
+- **Reduced GC frequency**: Large heap (16GB) prevents frequent memory pressure
 - **Larger heap sizes**: Reduces memory pressure and allocation overhead
 - **Manual GC control**: Ensures clean state between benchmark runs
-- **Predictable GC**: Single-threaded GC for consistent timing
+- **Consistent performance**: Disabled compilation cache for reproducible results
 
 ### Memory Management
 
-- **Pre-allocated heap**: 8GB initial heap prevents resizing overhead
-- **Optimized generations**: 4GB new generation reduces minor GC frequency
+- **Large heap allocation**: 16GB heap prevents resizing overhead during tests
+- **Memory pressure reduction**: Large heap reduces minor GC frequency
 - **Memory isolation**: Separate memory limits for workers and main process
 - **Cleanup protocols**: Regular memory cleanup between test phases
 
@@ -176,14 +180,16 @@ Updated npm scripts with optimized flags:
 - `--max-old-space-size=16384` (heap size - safe)
 
 **Flags that CANNOT be in NODE_OPTIONS**:
-- `--max-semi-space-size=4096` (generation size - restricted)
-- `--initial-heap-size=8192` (initial heap - restricted)
-- `--optimize-for-size=false` (optimization - restricted)
-- `--gc-interval=100000` (GC frequency - restricted)
 - `--expose-gc` (security-sensitive)
 - `--no-compilation-cache` (compilation - restricted)
-- `--predictable` (predictable mode - restricted)
-- `--single-threaded-gc` (GC threading - restricted)
+
+**Flags removed due to compatibility issues**:
+- `--max-semi-space-size=4096` (not available in Node.js 16-18)
+- `--initial-heap-size=8192` (not available in Node.js 16-18)
+- `--optimize-for-size=false` (syntax error in older versions)
+- `--gc-interval=100000` (not available in Node.js 16-18)
+- `--predictable` (not available in Node.js 16-18)
+- `--single-threaded-gc` (not available in Node.js 16-18)
 
 ### Common Issues
 

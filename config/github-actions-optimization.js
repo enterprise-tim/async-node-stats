@@ -14,14 +14,8 @@ export const GITHUB_ACTIONS_OPTIMIZATION = {
   // Node.js Memory Management
   nodeOptions: [
     '--max-old-space-size=16384',        // 16GB heap (4x increase from default)
-    '--max-semi-space-size=4096',        // 4GB new generation (reduces GC frequency)
-    '--initial-heap-size=8192',          // 8GB initial heap (reduces resizing)
-    '--optimize-for-size=false',         // Optimize for performance, not memory
-    '--gc-interval=100000',              // GC every 100k allocations (reduces GC frequency)
     '--expose-gc',                       // Enable manual GC control
-    '--no-compilation-cache',            // Disable compilation cache for consistency
-    '--predictable',                     // Enable predictable mode for consistent results
-    '--single-threaded-gc'               // Single-threaded GC for better isolation
+    '--no-compilation-cache'             // Disable compilation cache for consistency
   ].join(' '),
   
   // Environment Variables

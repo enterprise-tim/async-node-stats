@@ -124,7 +124,11 @@ jobs:
         mkdir -p public/results/versions/node_${{ matrix.node-version }}
         echo "📁 Created results directory: public/results/versions/node_${{ matrix.node-version }}"
         
-        # Run the benchmark with optimized settings
+        # Run the benchmark with version-aware optimization
+        echo "🔍 Checking Node.js version compatibility..."
+        node --version
+        
+        echo "🚀 Running benchmark with version-aware flags..."
         npm run multi-iteration ${{ github.event.inputs.iterations || 15 }}
         
         # Verify results were created

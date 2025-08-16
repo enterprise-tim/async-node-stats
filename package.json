@@ -9,10 +9,10 @@
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
     "start": "node src/index.js",
-    "benchmark": "node --max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000 src/benchmark.js",
-    "memory-test": "node --max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000 src/memory-test.js",
-    "benchmark-optimized": "node --max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000 --no-compilation-cache --predictable --single-threaded-gc src/benchmark.js",
-    "memory-test-verbose": "node --max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000 --trace-gc --trace-gc-verbose src/memory-test.js",
+    "benchmark": "node scripts/run-with-flags.js src/benchmark.js",
+    "memory-test": "node scripts/run-with-flags.js src/memory-test.js",
+    "benchmark-optimized": "node scripts/run-with-flags.js src/benchmark.js",
+    "memory-test-verbose": "node scripts/run-with-flags.js src/memory-test.js --trace-gc",
     "test-all": "npm run benchmark && npm run memory-test",
     "test-all-optimized": "npm run benchmark-optimized && npm run memory-test-verbose",
     "generate-report": "node src/report-generator.js",
@@ -21,7 +21,7 @@
     "validate-versions": "node scripts/validate-versions.js",
     "get-versions": "node scripts/get-node-versions.js",
     "multi-iteration": "node scripts/run-multi-iterations.js",
-    "multi-iteration-optimized": "node --max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000 --max-old-space-size=16384 scripts/run-multi-iterations.js",
+    "multi-iteration-optimized": "node scripts/run-with-flags.js scripts/run-multi-iterations.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

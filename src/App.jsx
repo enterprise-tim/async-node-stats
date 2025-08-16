@@ -28,6 +28,7 @@ import Performance from './components/Performance'
 import Memory from './components/Memory'
 import Recommendations from './components/Recommendations'
 import VersionAnalysis from './components/VersionAnalysis'
+import OptimizationInfo from './components/OptimizationInfo'
 
 // Navigation component that handles the tabs
 function Navigation() {
@@ -41,12 +42,13 @@ function Navigation() {
     if (path === '/performance') return 1
     if (path === '/memory') return 2
     if (path === '/version-analysis') return 3
-    if (path === '/recommendations') return 4
+    if (path === '/optimization') return 4
+    if (path === '/recommendations') return 5
     return 0
   }
 
   const handleTabChange = (event, newValue) => {
-    const routes = ['/overview', '/performance', '/memory', '/version-analysis', '/recommendations']
+    const routes = ['/overview', '/performance', '/memory', '/version-analysis', '/optimization', '/recommendations']
     navigate(routes[newValue])
   }
 
@@ -77,6 +79,7 @@ function Navigation() {
           <Tab label="Performance" />
           <Tab label="Memory" />
           <Tab label="Version Analysis" />
+          <Tab label="Optimization" />
           <Tab label="Recommendations" />
         </Tabs>
       </Container>
@@ -111,6 +114,7 @@ function App() {
             <Route path="/performance" element={<Performance />} />
             <Route path="/memory" element={<Memory />} />
             <Route path="/version-analysis" element={<VersionAnalysis />} />
+            <Route path="/optimization" element={<OptimizationInfo />} />
             <Route path="/recommendations" element={<Recommendations />} />
             {/* Redirect any unknown routes to overview */}
             <Route path="*" element={<Overview />} />
