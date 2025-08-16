@@ -9,9 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       iterations:
-        description: 'Number of iterations per version (default: 2)'
+        description: 'Number of iterations per version (default: 15)'
         required: false
-        default: '2'
+        default: '15'
         type: number
       run_memory_tests:
         description: 'Run memory profiling tests'
@@ -111,16 +111,21 @@ jobs:
     - name: Run multi-iteration benchmarks
       env:
         NODE_VERSION: ${{ matrix.node-version }}
+        NODE_OPTIONS: "--max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000"
+        UV_THREADPOOL_SIZE: "8"
+        NODE_ENV: "production"
       run: |
-        echo "🚀 Running ${{ github.event.inputs.iterations || 2 }} iterations for Node.js ${{ matrix.node-version }}"
+        echo "🚀 Running ${{ github.event.inputs.iterations || 15 }} iterations for Node.js ${{ matrix.node-version }}"
         echo "📊 Matrix job ${{ strategy.job-index }} of ${{ strategy.job-total }}"
+        echo "🔧 Using optimized Node.js flags: $NODE_OPTIONS"
+        echo "🧵 Thread pool size: $UV_THREADPOOL_SIZE"
         
         # Ensure results directory exists
         mkdir -p public/results/versions/node_${{ matrix.node-version }}
         echo "📁 Created results directory: public/results/versions/node_${{ matrix.node-version }}"
         
-        # Run the benchmark
-        npm run multi-iteration ${{ github.event.inputs.iterations || 2 }}
+        # Run the benchmark with optimized settings
+        npm run multi-iteration ${{ github.event.inputs.iterations || 15 }}
         
         # Verify results were created
         echo "📊 Benchmark completed, checking results:"
@@ -128,13 +133,18 @@ jobs:
         
     - name: Run memory profiling tests
       if: ${{ github.event.inputs.run_memory_tests != 'false' }}
+      env:
+        NODE_OPTIONS: "--max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000"
+        UV_THREADPOOL_SIZE: "8"
+        NODE_ENV: "production"
       run: |
         echo "🧠 Running memory tests for Node.js ${{ matrix.node-version }}"
+        echo "🔧 Using optimized Node.js flags: $NODE_OPTIONS"
         
         # Ensure results directory exists
         mkdir -p public/results/versions/node_${{ matrix.node-version }}
         
-        # Run memory test
+        # Run memory test with optimized settings
         node --expose-gc src/memory-test.js
         
         # Copy memory results to version directory
@@ -255,6 +265,13 @@ jobs:
     
     - name: Install dependencies
       run: npm ci
+    
+    - name: Set Node.js optimizations
+      run: |
+        echo "🔧 Setting Node.js optimization environment variables..."
+        echo "NODE_OPTIONS=--max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000" >> $GITHUB_ENV
+        echo "UV_THREADPOOL_SIZE=8" >> $GITHUB_ENV
+        echo "NODE_ENV=production" >> $GITHUB_ENV
     
     - name: Prepare results directory
       run: |

@@ -8,10 +8,19 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 class MultiIterationRunner {
-  constructor(iterations = 10) {
+  constructor(iterations = 15) {
     this.iterations = iterations;
     this.resultsDir = path.join(process.cwd(), 'public', 'results');
     this.versionsDir = path.join(this.resultsDir, 'versions');
+    
+    // GitHub Actions optimization settings
+    this.optimization = {
+      gcBetweenRuns: process.env.NODE_ENV === 'production',
+      warmupRuns: 3,
+      memorySamplingInterval: 100,
+      maxConcurrentTests: 2,
+      timeoutMs: 300000 // 5 minutes
+    };
   }
 
   async run() {
@@ -30,7 +39,29 @@ class MultiIterationRunner {
     // Create version directory
     await fs.mkdir(versionDir, { recursive: true });
     
-    // Run iterations
+    // Run warmup iterations (not measured)
+    if (this.optimization.warmupRuns > 0) {
+      console.log(`\n🔥 Running ${this.optimization.warmupRuns} warmup iterations...`);
+      for (let i = 1; i <= this.optimization.warmupRuns; i++) {
+        console.log(`  🔥 Warmup ${i}/${this.optimization.warmupRuns}...`);
+        try {
+          await this.runWarmupIteration(i);
+          console.log(`  ✅ Warmup ${i} completed`);
+        } catch (error) {
+          console.warn(`  ⚠️  Warmup ${i} failed:`, error.message);
+        }
+      }
+      console.log(`✅ Warmup phase completed`);
+      
+      // Force final GC before actual measurements
+      if (global.gc) {
+        console.log(`🗑️  Final garbage collection before measurements...`);
+        global.gc();
+        await new Promise(resolve => setTimeout(resolve, 200));
+      }
+    }
+    
+    // Run actual iterations
     const results = [];
     for (let i = 1; i <= this.iterations; i++) {
       console.log(`\n🔄 Running iteration ${i}/${this.iterations}...`);
@@ -73,13 +104,55 @@ class MultiIterationRunner {
     }
   }
 
+  async runWarmupIteration(iterationNumber) {
+    try {
+      // Run benchmark without saving results
+      console.log(`    📊 Running warmup benchmark...`);
+      execSync('npm run benchmark', {
+        cwd: process.cwd(),
+        encoding: 'utf8',
+        maxBuffer: 1024 * 1024 * 10, // 10MB buffer
+        stdio: 'pipe' // Suppress output during warmup
+      });
+      
+      // Run memory test without saving results
+      console.log(`    🧠 Running warmup memory test...`);
+      execSync('npm run memory-test', {
+        cwd: process.cwd(),
+        encoding: 'utf8',
+        maxBuffer: 1024 * 1024 * 5, // 5MB buffer
+        stdio: 'pipe' // Suppress output during warmup
+      });
+      
+      return { success: true };
+      
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  }
+
   async runIteration(iterationNumber, iterationDir) {
     const startTime = Date.now();
     
     try {
+      // Force garbage collection before starting (if in production mode)
+      if (this.optimization.gcBetweenRuns && global.gc) {
+        console.log(`  🗑️  Forcing garbage collection...`);
+        global.gc();
+        // Small delay to let GC complete
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+      
       // Run benchmark
       console.log(`  📊 Running benchmark...`);
       const benchmarkResult = await this.runBenchmark(iterationDir);
+      
+      // Force garbage collection between tests
+      if (this.optimization.gcBetweenRuns && global.gc) {
+        console.log(`  🗑️  Garbage collection between tests...`);
+        global.gc();
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
       
       // Run memory test
       console.log(`  🧠 Running memory test...`);
