@@ -14,13 +14,18 @@ The benchmark workflow has been optimized to:
 
 ### 1. Node.js Memory Management
 
+**Important Note**: Some Node.js flags cannot be used in `NODE_OPTIONS` environment variable due to security restrictions in GitHub Actions. These flags are applied directly in the npm scripts instead.
+
 ```bash
+# Flags used in NODE_OPTIONS (environment variable)
 --max-old-space-size=16384        # 16GB heap (4x increase from default)
 --max-semi-space-size=4096        # 4GB new generation (reduces GC frequency)
 --initial-heap-size=8192          # 8GB initial heap (reduces resizing)
 --optimize-for-size=false         # Optimize for performance, not memory
 --gc-interval=100000              # GC every 100k allocations (reduces GC frequency)
---expose-gc                       # Enable manual GC control
+
+# Flags used in npm scripts (cannot be in NODE_OPTIONS)
+--expose-gc                       # Enable manual GC control (security-sensitive)
 --no-compilation-cache            # Disable compilation cache for consistency
 --predictable                     # Enable predictable mode for consistent results
 --single-threaded-gc              # Single-threaded GC for better isolation
@@ -144,6 +149,29 @@ Updated npm scripts with optimized flags:
 4. **Adjust resource limits** based on runner performance
 
 ## Troubleshooting
+
+### Common Issues
+
+#### Node.js Flag Restrictions
+
+**Error**: `node: --expose-gc is not allowed in NODE_OPTIONS`
+
+**Cause**: GitHub Actions restricts certain security-sensitive Node.js flags from being used in the `NODE_OPTIONS` environment variable.
+
+**Solution**: Security-sensitive flags like `--expose-gc` are applied directly in the npm scripts, while performance flags are set via `NODE_OPTIONS`.
+
+**Flags that CAN be in NODE_OPTIONS**:
+- `--max-old-space-size=16384`
+- `--max-semi-space-size=4096`
+- `--initial-heap-size=8192`
+- `--optimize-for-size=false`
+- `--gc-interval=100000`
+
+**Flags that CANNOT be in NODE_OPTIONS**:
+- `--expose-gc` (security-sensitive)
+- `--no-compilation-cache`
+- `--predictable`
+- `--single-threaded-gc`
 
 ### Common Issues
 

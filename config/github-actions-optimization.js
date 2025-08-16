@@ -28,7 +28,7 @@ export const GITHUB_ACTIONS_OPTIMIZATION = {
   environment: {
     NODE_ENV: 'production',
     UV_THREADPOOL_SIZE: '8',             // 2x CPU cores for I/O operations
-    NODE_OPTIONS: '--max-old-space-size=16384 --expose-gc --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000'
+    NODE_OPTIONS: '--max-old-space-size=16384 --max-semi-space-size=4096 --initial-heap-size=8192 --optimize-for-size=false --gc-interval=100000'
   },
   
   // Benchmark Configuration
