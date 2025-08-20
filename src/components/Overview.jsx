@@ -405,26 +405,18 @@ class MultiTenantRateLimiter {
 
       <Paper elevation={1} sx={{ p: 3, backgroundColor: '#f8f9fa' }}>
         <Typography variant="h6" gutterBottom>
-          Quick Start
+          About This Site
         </Typography>
-        <Box component="pre" sx={{ 
-          backgroundColor: '#f1f3f4', 
-          p: 2, 
-          borderRadius: 1, 
-          fontFamily: 'monospace',
-          fontSize: '0.9rem',
-          overflow: 'auto'
-        }}>
-{`git clone https://github.com/tobrien/async-node-stats.git
-cd async-node-stats
-npm install
-
-# Run simple overhead tests
-npm run benchmark
-
-# Run advanced distributed tests  
-npm run benchmark-distributed`}
-        </Box>
+        <Typography variant="body2" paragraph>
+          This GitHub Pages site displays benchmark results from AsyncLocalStorage performance testing across Node.js versions. 
+          The data is loaded from external sources and provides insights into performance overhead and memory usage patterns.
+        </Typography>
+        <Typography variant="body2">
+          For more information about running benchmarks, visit the benchmark repository at{' '}
+          <a href="https://github.com/enterprise-tim/als-benchmark-basic" target="_blank" rel="noopener noreferrer">
+            https://github.com/enterprise-tim/als-benchmark-basic
+          </a>
+        </Typography>
       </Paper>
     </Box>
   )

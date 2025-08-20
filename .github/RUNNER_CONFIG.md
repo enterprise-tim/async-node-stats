@@ -19,9 +19,8 @@ All workflows in this repository use **`ubuntu-latest-4-cores`** as the standard
 
 ### Workflow Files Using This Configuration
 
-- `benchmark.yml` - Main AsyncLocalStorage benchmarks
-- `performance-tests-enterprise.yml` - Enterprise-grade performance testing
-- `pages.yml` - GitHub Pages deployment
+- `deploy.yml` - GitHub Pages deployment with benchmark data download
+- `pages.yml` - GitHub Pages deployment (alternative workflow)
 - `debug-runners.yml` - Runner debugging and diagnostics
 
 ### Configuration Reference

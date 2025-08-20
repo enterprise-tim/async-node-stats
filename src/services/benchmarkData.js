@@ -1,18 +1,43 @@
 // Service to load and process benchmark data from version-comparison.json endpoint
 // This provides a simple way to load all benchmark data in one request
+// 
+// Data Flow:
+// 1. loadVersionComparisonData() fetches data from the GitHub Pages site
+// 2. NODE_VERSIONS is populated dynamically from the loaded data
+// 3. All other functions use the dynamically loaded data
 
-const VERSION_COMPARISON_URL = 'https://enterprise-tim.github.io/async-node-stats/version-comparison.json'
+const VERSION_COMPARISON_URL = 'https://tobrien.github.io/async-node-stats/version-comparison.json'
 
-const NODE_VERSIONS = [
-  '16.20.2', '18.19.1', '20.0.0', '20.11.0', 
-  '21.0.0', '21.7.3', '22.0.0', '22.18.0', 
-  '23.0.0', '24.0.0', '24.6.0'
-];
+// NODE_VERSIONS will be populated dynamically from the loaded data
+let NODE_VERSIONS = [];
 
 // Load version comparison data from the centralized endpoint
 async function loadVersionComparisonData() {
   try {
-    console.log('Loading version comparison data from:', VERSION_COMPARISON_URL);
+    // First try to load from local development data
+    const localUrl = '/docs/version-comparison.json';
+    console.log('Trying to load version comparison data from local development:', localUrl);
+    
+    try {
+      const localResponse = await fetch(localUrl);
+      if (localResponse.ok) {
+        const localData = await localResponse.json();
+        console.log('Version comparison data loaded successfully from local development:', localData);
+        
+        // Populate NODE_VERSIONS dynamically from the loaded data
+        if (localData && localData.comparisons && Array.isArray(localData.comparisons)) {
+          NODE_VERSIONS = localData.comparisons.map(comparison => comparison.nodeVersion).sort();
+          console.log('Dynamically populated NODE_VERSIONS from local data:', NODE_VERSIONS);
+        }
+        
+        return localData;
+      }
+    } catch (localError) {
+      console.log('Local development data not available, trying production URL');
+    }
+    
+    // Fall back to production URL
+    console.log('Loading version comparison data from production:', VERSION_COMPARISON_URL);
     const response = await fetch(VERSION_COMPARISON_URL);
     
     if (!response.ok) {
@@ -20,7 +45,16 @@ async function loadVersionComparisonData() {
     }
     
     const data = await response.json();
-    console.log('Version comparison data loaded successfully:', data);
+    console.log('Version comparison data loaded successfully from production:', data);
+    
+    // Populate NODE_VERSIONS dynamically from the loaded data
+    if (data && data.comparisons && Array.isArray(data.comparisons)) {
+      NODE_VERSIONS = data.comparisons.map(comparison => comparison.nodeVersion).sort();
+      console.log('Dynamically populated NODE_VERSIONS from production data:', NODE_VERSIONS);
+    } else {
+      console.warn('No comparisons data found, NODE_VERSIONS will remain empty');
+    }
+    
     return data;
   } catch (error) {
     console.error('Error loading version comparison data:', error);
@@ -137,6 +171,11 @@ function getPerformanceSummary(performanceData) {
   return summary;
 }
 
+// Get current NODE_VERSIONS (will be empty until data is loaded)
+function getNodeVersions() {
+  return [...NODE_VERSIONS]; // Return a copy to prevent external modification
+}
+
 // Debug function for testing data loading (simplified)
 async function debugDataLoading(version) {
   console.log(`=== Debugging data loading for ${version} ===`);
@@ -163,5 +202,5 @@ export {
   getMemoryComparison,
   getPerformanceSummary,
   debugDataLoading,
-  NODE_VERSIONS
+  getNodeVersions
 };

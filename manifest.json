@@ -1,0 +1,11 @@
+{
+  "releaseType": "benchmark-results",
+  "generatedAt": "2025-08-20T12:57:31+00:00",
+  "nodeVersions": [
+16.20.2 18.19.1 20.11.0 21.7.3 22.18.0 23.7.0 24.6.0
+  ],
+  "totalSize": "232K",
+  "workflowRun": "17098991987",
+  "dataFiles": 14,
+  "note": "This release contains raw benchmark data and analysis files."
+}

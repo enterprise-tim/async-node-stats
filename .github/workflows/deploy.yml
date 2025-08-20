@@ -33,20 +33,20 @@ jobs:
         
       - name: Download latest benchmark release
         run: |
-          echo "📥 Downloading latest benchmark release..."
+          echo "📥 Downloading latest benchmark release from enterprise-tim/als-benchmark-basic..."
           
           # Install jq for JSON parsing
           sudo apt-get update && sudo apt-get install -y jq
           
-          # Get the latest release
-          LATEST_RELEASE=$(curl -s "https://api.github.com/repos/${{ github.repository }}/releases/latest" | jq -r '.tag_name // empty')
+          # Get the latest release from the als-benchmark-basic repository
+          LATEST_RELEASE=$(curl -s "https://api.github.com/repos/enterprise-tim/als-benchmark-basic/releases/latest" | jq -r '.tag_name // empty')
           
           if [ -n "$LATEST_RELEASE" ] && [[ "$LATEST_RELEASE" == benchmark-results-* ]]; then
             echo "Found latest benchmark release: $LATEST_RELEASE"
             
-            # Download the results archive
-            echo "Downloading from: https://github.com/${{ github.repository }}/releases/download/$LATEST_RELEASE/benchmark-results.tar.gz"
-            if curl -L -f -o "benchmark-results.tar.gz" "https://github.com/${{ github.repository }}/releases/download/$LATEST_RELEASE/benchmark-results.tar.gz"; then
+            # Download the results archive from the als-benchmark-basic repository
+            echo "Downloading from: https://github.com/enterprise-tim/als-benchmark-basic/releases/download/$LATEST_RELEASE/benchmark-results.tar.gz"
+            if curl -L -f -o "benchmark-results.tar.gz" "https://github.com/enterprise-tim/als-benchmark-basic/releases/download/$LATEST_RELEASE/benchmark-results.tar.gz"; then
               echo "Download successful"
               echo "Downloaded file size: $(ls -lh benchmark-results.tar.gz | awk '{print $5}')"
               echo "File type: $(file benchmark-results.tar.gz)"
@@ -81,7 +81,7 @@ jobs:
               echo "Failed to download benchmark results"
             fi
           else
-            echo "No benchmark release found, using existing data if available..."
+            echo "No benchmark release found in enterprise-tim/als-benchmark-basic, using existing data if available..."
           fi
         
       - name: Prepare benchmark data

@@ -65,8 +65,8 @@ const VersionAnalysis = () => {
             // No data available - this is expected when no benchmarks have been run
             setError({
               type: 'no-data',
-              message: 'No benchmark data is currently available. This usually means no benchmarks have been run yet, or the latest results are still being processed.',
-              details: 'The version analysis page requires benchmark data to be generated from actual performance tests. Check back later after benchmarks have completed.'
+                      message: 'No benchmark data is currently available. This usually means the data source is not accessible or the latest results are still being processed.',
+        details: 'The version analysis page requires benchmark data to be loaded from external sources. Check back later after data becomes available.'
             })
           } else {
             throw new Error(`Failed to load version data: ${response.status}`)
@@ -368,7 +368,7 @@ Node.js v24.6.0 represents the culmination of years of AsyncLocalStorage evoluti
               {error.details}
             </Typography>
             <Typography variant="body2" sx={{ mt: 2, fontStyle: 'italic' }}>
-              This page will automatically populate once benchmark results are available from the performance testing workflow.
+              This page will automatically populate once benchmark results are available from the data source.
             </Typography>
           </Alert>
         </Box>
@@ -424,7 +424,7 @@ Node.js v24.6.0 represents the culmination of years of AsyncLocalStorage evoluti
 
           {!versionData && !loading && (
             <Alert severity="warning" sx={{ mb: 3 }}>
-              No version data available. Please run the benchmark tests first.
+              No version data available. Please check if the data source is accessible.
             </Alert>
           )}
 
@@ -619,7 +619,7 @@ Node.js v24.6.0 represents the culmination of years of AsyncLocalStorage evoluti
 
                   {!versionData && !loading && (
                     <Alert severity="info" sx={{ mt: 2 }}>
-                      Run <code>./test-versions.sh</code> to generate benchmark data for all Node.js versions.
+                      Check the data source to see benchmark data for all Node.js versions.
                     </Alert>
                   )}
                 </CardContent>
@@ -646,7 +646,7 @@ Node.js v24.6.0 represents the culmination of years of AsyncLocalStorage evoluti
                         <Typography variant="body2" color="text.secondary">
                           {versionData ? 
                             `Node.js ${versionData.summary.bestVersion} shows ${versionData.summary.improvement} better performance compared to Node.js ${versionData.summary.worstVersion}. AsyncLocalStorage has become significantly more efficient over recent versions.` :
-                            'Run the benchmark tests to see performance improvements across Node.js versions.'
+                            'Check the data source to see performance improvements across Node.js versions.'
                           }
                         </Typography>
                       </Paper>

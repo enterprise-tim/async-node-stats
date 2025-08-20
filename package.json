@@ -1,34 +1,21 @@
 {
   "name": "async-node-stats",
   "version": "1.0.0",
-  "description": "Performance benchmarks for AsyncLocalStorage overhead analysis across Node.js versions",
+  "description": "GitHub Pages site for displaying AsyncLocalStorage benchmark results",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "start": "node src/index.js",
-    "benchmark": "node --max-old-space-size=8192 --expose-gc src/benchmark.js",
-    "memory-test": "node --max-old-space-size=8192 --expose-gc --trace-gc src/memory-test.js",
-    "benchmark-optimized": "node --max-old-space-size=8192 --expose-gc --no-compilation-cache --predictable --single-threaded-gc src/benchmark.js",
-    "memory-test-verbose": "node --max-old-space-size=8192 --expose-gc --trace-gc --trace-gc-verbose src/memory-test.js",
-    "test-all": "npm run benchmark && npm run memory-test",
-    "test-all-optimized": "npm run benchmark-optimized && npm run memory-test-verbose",
-    "generate-report": "node src/report-generator.js",
-    "compare-versions": "node src/version-comparison.js",
-    "serve-docs": "npx http-server docs -p 8080",
-    "validate-versions": "node scripts/validate-versions.js",
-    "get-versions": "node scripts/get-node-versions.js",
-    "multi-iteration": "node scripts/run-multi-iterations.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "download-benchmarks": "node scripts/download-benchmarks.js",
+    "build-with-data": "npm run download-benchmarks && npm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.0",
     "@mui/material": "^5.15.0",
-    "benchmark": "^2.1.4",
     "chart.js": "^4.5.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.3.0",
@@ -52,7 +39,7 @@
     "performance",
     "nodejs",
     "benchmark",
-    "overhead"
+    "github-pages"
   ],
   "author": "Tim O'Brien",
   "license": "MIT"

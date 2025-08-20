@@ -40,7 +40,7 @@ const Performance = () => {
         setPerformanceData(data)
         
         if (data.length === 0) {
-          setError('No benchmark data available. Please run the benchmarks first or check if the data files exist.')
+          setError('No benchmark data available. Please check if the data files exist or try refreshing the page.')
         } else {
           const summaryData = getPerformanceSummary(data)
           setSummary(summaryData)
@@ -135,24 +135,24 @@ const Performance = () => {
             </Typography>
           </Box>
           <Typography variant="body1" paragraph>
-            The performance charts are empty because no benchmark data has been generated yet.
+            The performance charts are empty because no benchmark data is currently available.
           </Typography>
           <Typography variant="body2" color="text.secondary" paragraph>
-            To see performance data:
+            This site loads benchmark data from external sources. If no data is displayed:
           </Typography>
           <Box component="ul" sx={{ pl: 3, mb: 2 }}>
             <Typography component="li" variant="body2" color="text.secondary">
-              Run the benchmark tests using the scripts in the <code>scripts/</code> directory
+              Check if the data source is accessible
             </Typography>
             <Typography component="li" variant="body2" color="text.secondary">
-              Ensure the results are saved to the <code>results/</code> directory
+              Try refreshing the page
             </Typography>
             <Typography component="li" variant="body2" color="text.secondary">
-              Check that a <code>data-index.json</code> file exists with the correct file mappings
+              Check the browser console for any loading errors
             </Typography>
           </Box>
           <Typography variant="body2" color="text.secondary">
-            The application will automatically detect and load benchmark data once it's available.
+            The application will automatically load benchmark data when it becomes available.
           </Typography>
         </Paper>
       )}

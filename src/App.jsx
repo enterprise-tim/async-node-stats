@@ -94,8 +94,8 @@ function App() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#6750a4', fontWeight: 600 }}>
               AsyncLocalStorage Benchmarks
             </Typography>
-            <Button color="inherit" href="https://github.com/tobrien/async-node-stats" target="_blank">
-              GitHub
+            <Button color="inherit" href="https://github.com/enterprise-tim/als-benchmark-basic" target="_blank">
+              Benchmark Repo
             </Button>
           </Toolbar>
         </AppBar>
