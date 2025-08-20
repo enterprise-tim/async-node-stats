@@ -15,7 +15,7 @@ let NODE_VERSIONS = [];
 async function loadVersionComparisonData() {
   try {
     // First try to load from local development data
-    const localUrl = './version-comparison.json';
+    const localUrl = './data/version-comparison.json';
     console.log('Trying to load version comparison data from local development:', localUrl);
     
     try {

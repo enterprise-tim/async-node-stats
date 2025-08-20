@@ -59,7 +59,7 @@ const VersionAnalysis = () => {
         setError(null)
         
         // Load the actual version comparison data from the generated JSON
-        const response = await fetch('./version-comparison.json')
+        const response = await fetch('./data/version-comparison.json')
         if (!response.ok) {
           if (response.status === 404) {
             // No data available - this is expected when no benchmarks have been run

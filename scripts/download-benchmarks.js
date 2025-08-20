@@ -261,11 +261,11 @@ async function processBenchmarkData() {
       JSON.stringify(versionComparisonData, null, 2)
     );
     
-    // Also copy to public directory for GitHub Pages
-    const publicPath = path.join(projectRoot, 'public');
-    await fsPromises.mkdir(publicPath, { recursive: true });
+    // Also copy to public/data directory for GitHub Pages
+    const publicDataPath = path.join(projectRoot, 'public', 'data');
+    await fsPromises.mkdir(publicDataPath, { recursive: true });
     await fsPromises.writeFile(
-      path.join(publicPath, 'version-comparison.json'),
+      path.join(publicDataPath, 'version-comparison.json'),
       JSON.stringify(versionComparisonData, null, 2)
     );
     
@@ -305,7 +305,7 @@ async function verifyData() {
     // Check for key files
     const keyFiles = [
       'docs/version-comparison.json',
-      'public/version-comparison.json'
+      'public/data/version-comparison.json'
     ];
     
     for (const file of keyFiles) {
