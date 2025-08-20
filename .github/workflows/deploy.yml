@@ -91,44 +91,58 @@ jobs:
           echo "Directory contents:"
           ls -la
           
-          # Create results directory structure if it doesn't exist
-          mkdir -p results/versions docs
+          # Create docs directory if it doesn't exist
+          mkdir -p docs
           
-          # Only generate reports if we have actual benchmark data from releases
-          if [ -d "results/versions" ] && [ "$(ls -A results/versions 2>/dev/null)" ]; then
-            echo "Found benchmark data from releases, generating reports..."
-            npm run compare-versions || echo "Version comparison failed, continuing with build"
-            npm run generate-report || echo "Report generation failed, continuing with build"
+          # Check if we have processed data already in results directory
+          if [ -f "results/version-comparison.json" ]; then
+            echo "✅ Found pre-processed version-comparison.json in results directory"
+            echo "File size: $(ls -lh results/version-comparison.json | awk '{print $5}')"
             
-            # Verify that the files were actually generated
-            echo "🔍 Verifying generated files..."
-            if [ -f "docs/version-comparison.json" ]; then
-              echo "✅ version-comparison.json exists"
-              echo "File size: $(ls -lh docs/version-comparison.json | awk '{print $5}')"
-            else
-              echo "❌ version-comparison.json not found"
+            # Copy the processed files to docs directory for the build
+            cp results/version-comparison.json docs/ 2>/dev/null || echo "Failed to copy version-comparison.json"
+            
+            # Check for other processed files
+            if [ -f "results/chart-data.json" ]; then
+              cp results/chart-data.json docs/ 2>/dev/null || echo "Failed to copy chart-data.json"
+              echo "✅ Copied chart-data.json to docs/"
             fi
             
-            if [ -f "docs/chart-data.json" ]; then
-              echo "✅ chart-data.json exists"
-              echo "File size: $(ls -lh docs/chart-data.json | awk '{print $5}')"
-            else
-              echo "❌ chart-data.json not found"
+            if [ -f "results/detailed-results.json" ]; then
+              cp results/detailed-results.json docs/ 2>/dev/null || echo "Failed to copy detailed-results.json"
+              echo "✅ Copied detailed-results.json to docs/"
             fi
             
-            if [ -f "docs/detailed-results.json" ]; then
-              echo "✅ detailed-results.json exists"
-              echo "File size: $(ls -lh docs/detailed-results.json | awk '{print $5}')"
-            else
-              echo "❌ detailed-results.json not found"
-            fi
+            echo "✅ Pre-processed data prepared for build"
+          elif [ -d "results/versions" ] && [ "$(ls -A results/versions 2>/dev/null)" ]; then
+            echo "Found raw benchmark data, but no processing scripts available"
+            echo "This is expected for the display-only site"
+            echo "Creating minimal directory structure for build..."
           else
             echo "No benchmark data found, creating minimal directory structure..."
-            # Create empty directories to prevent build failures, but don't create placeholder data
-            mkdir -p results/versions
-            mkdir -p docs
-            echo "✅ Directory structure prepared for build"
-            echo "ℹ️  No analysis files will be generated - site will show 'no data available' message"
+          fi
+          
+          # Verify that the files are in the right place
+          echo "🔍 Verifying files in docs directory..."
+          if [ -f "docs/version-comparison.json" ]; then
+            echo "✅ docs/version-comparison.json exists"
+            echo "File size: $(ls -lh docs/version-comparison.json | awk '{print $5}')"
+          else
+            echo "❌ docs/version-comparison.json not found"
+          fi
+          
+          if [ -f "docs/chart-data.json" ]; then
+            echo "✅ docs/chart-data.json exists"
+            echo "File size: $(ls -lh docs/chart-data.json | awk '{print $5}')"
+          else
+            echo "❌ docs/chart-data.json not found"
+          fi
+          
+          if [ -f "docs/detailed-results.json" ]; then
+            echo "✅ docs/detailed-results.json exists"
+            echo "File size: $(ls -lh docs/detailed-results.json | awk '{print $5}')"
+          else
+            echo "❌ docs/detailed-results.json not found"
           fi
         
       - name: Build React app
