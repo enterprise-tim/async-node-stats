@@ -59,7 +59,7 @@ const VersionAnalysis = () => {
         setError(null)
         
         // Load the actual version comparison data from the generated JSON
-        const response = await fetch('/async-node-stats/version-comparison.json')
+        const response = await fetch('./version-comparison.json')
         if (!response.ok) {
           if (response.status === 404) {
             // No data available - this is expected when no benchmarks have been run
@@ -80,28 +80,28 @@ const VersionAnalysis = () => {
         
         // Transform the data to match the expected format
         const transformedData = {
-          versions: data.comparisons.map(comparison => ({
-            version: comparison.nodeVersion,
-            basicOverhead: comparison.avgOverheadPercent || 0,
-            nestedOverhead: comparison.avgNestedOverheadPercent || 0,
-            memoryOverhead: (comparison.totalMemoryOverheadBytes || 0) / (1024 * 1024), // Convert bytes to MB
+          versions: data.versions.map(version => ({
+            version: version.version,
+            basicOverhead: version.avgOverhead || 0,
+            nestedOverhead: version.avgNestedOverhead || 0,
+            memoryOverhead: version.memoryOverheadMB || 0,
             nestedMemoryOverhead: 0, // Not available in current data structure
-            baselineTime: null, // Not available in current data structure
-            baselineMemory: 0, // Not available in current data structure
+            baselineTime: version.baselineTime || null,
+            baselineMemory: version.baselineMemory || 0,
             status: "stable",
-            testDate: data.generatedAt || new Date().toISOString(),
-            benchmarkCount: comparison.traditionalTestCount + comparison.distributedTestCount || 0,
-            iterations: comparison.iterations || 1,
-            benchmarks: comparison.testResults || []
+            testDate: version.testDate || data.generatedAt || new Date().toISOString(),
+            benchmarkCount: version.benchmarkCount || 0,
+            iterations: version.iterations || 1,
+            benchmarks: version.benchmarks || []
           })),
           summary: {
-            bestVersion: data.comparisons.reduce((best, v) => 
-              (v.avgOverheadPercent || 0) < (best.avgOverheadPercent || 0) ? v : best
-            ).nodeVersion,
-            worstVersion: data.comparisons.reduce((worst, v) => 
-              (v.avgOverheadPercent || 0) > (worst.avgOverheadPercent || 0) ? v : worst
-            ).nodeVersion,
-            improvement: calculateImprovement(data.comparisons.map(c => ({ avgOverhead: c.avgOverheadPercent }))),
+            bestVersion: data.versions.reduce((best, v) => 
+              (v.avgOverhead || 0) < (best.avgOverhead || 0) ? v : best
+            ).version,
+            worstVersion: data.versions.reduce((worst, v) => 
+              (v.avgOverhead || 0) > (worst.avgOverhead || 0) ? v : worst
+            ).version,
+            improvement: calculateImprovement(data.versions.map(v => ({ avgOverhead: v.avgOverhead }))),
             trend: "improving"
           }
         }
@@ -111,7 +111,7 @@ const VersionAnalysis = () => {
         setVersionData(transformedData)
         
         // Load the analysis content from the markdown file
-        const analysisResponse = await fetch('/async-node-stats/NODEJS_ASYNCLOCALSTORAGE_ANALYSIS.md')
+        const analysisResponse = await fetch('./NODEJS_ASYNCLOCALSTORAGE_ANALYSIS.md')
         if (analysisResponse.ok) {
           const analysisText = await analysisResponse.text()
           setAnalysisContent(analysisText)

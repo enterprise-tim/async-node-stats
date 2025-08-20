@@ -6,7 +6,7 @@
 // 2. NODE_VERSIONS is populated dynamically from the loaded data
 // 3. All other functions use the dynamically loaded data
 
-const VERSION_COMPARISON_URL = 'https://tobrien.github.io/async-node-stats/version-comparison.json'
+const VERSION_COMPARISON_URL = 'https://enterprise-tim.github.io/async-node-stats/version-comparison.json'
 
 // NODE_VERSIONS will be populated dynamically from the loaded data
 let NODE_VERSIONS = [];
@@ -15,7 +15,7 @@ let NODE_VERSIONS = [];
 async function loadVersionComparisonData() {
   try {
     // First try to load from local development data
-    const localUrl = '/docs/version-comparison.json';
+    const localUrl = './version-comparison.json';
     console.log('Trying to load version comparison data from local development:', localUrl);
     
     try {
@@ -25,8 +25,8 @@ async function loadVersionComparisonData() {
         console.log('Version comparison data loaded successfully from local development:', localData);
         
         // Populate NODE_VERSIONS dynamically from the loaded data
-        if (localData && localData.comparisons && Array.isArray(localData.comparisons)) {
-          NODE_VERSIONS = localData.comparisons.map(comparison => comparison.nodeVersion).sort();
+        if (localData && localData.versions && Array.isArray(localData.versions)) {
+          NODE_VERSIONS = localData.versions.map(version => version.cleanVersion || version.version).sort();
           console.log('Dynamically populated NODE_VERSIONS from local data:', NODE_VERSIONS);
         }
         
@@ -48,11 +48,11 @@ async function loadVersionComparisonData() {
     console.log('Version comparison data loaded successfully from production:', data);
     
     // Populate NODE_VERSIONS dynamically from the loaded data
-    if (data && data.comparisons && Array.isArray(data.comparisons)) {
-      NODE_VERSIONS = data.comparisons.map(comparison => comparison.nodeVersion).sort();
+    if (data && data.versions && Array.isArray(data.versions)) {
+      NODE_VERSIONS = data.versions.map(version => version.cleanVersion || version.version).sort();
       console.log('Dynamically populated NODE_VERSIONS from production data:', NODE_VERSIONS);
     } else {
-      console.warn('No comparisons data found, NODE_VERSIONS will remain empty');
+      console.warn('No versions data found, NODE_VERSIONS will remain empty');
     }
     
     return data;
@@ -68,30 +68,27 @@ async function getPerformanceComparison() {
     console.log('Loading performance comparison data...');
     
     const versionData = await loadVersionComparisonData();
-    if (!versionData || !versionData.comparisons) {
+    if (!versionData || !versionData.versions) {
       console.log('No benchmark data available');
       return [];
     }
     
-    const performanceData = versionData.comparisons.map(comparison => ({
-      version: comparison.nodeVersion,
-      basicOverhead: comparison.testResults
-        .filter(test => test.type === 'traditional')
-        .map(test => ({
-          name: test.name,
-          overhead: test.overheadPercent
+    const performanceData = versionData.versions.map(version => ({
+      version: version.cleanVersion || version.version,
+      basicOverhead: version.benchmarks
+        .map(benchmark => ({
+          name: benchmark.name,
+          overhead: benchmark.overhead
         })),
-      nestedOverhead: comparison.testResults
-        .filter(test => test.type === 'traditional')
-        .map(test => ({
-          name: test.name,
-          overhead: test.nestedOverheadPercent
+      nestedOverhead: version.benchmarks
+        .map(benchmark => ({
+          name: benchmark.name,
+          overhead: benchmark.nestedOverhead
         })),
-      memoryOverhead: comparison.testResults
-        .filter(test => test.type === 'traditional')
-        .map(test => ({
-          name: test.name,
-          overhead: test.memoryOverheadBytes / 1024 / 1024 // Convert to MB
+      memoryOverhead: version.benchmarks
+        .map(benchmark => ({
+          name: benchmark.name,
+          overhead: benchmark.memoryMB
         }))
     }));
     
@@ -109,23 +106,22 @@ async function getMemoryComparison() {
     console.log('Loading memory comparison data...');
     
     const versionData = await loadVersionComparisonData();
-    if (!versionData || !versionData.comparisons) {
+    if (!versionData || !versionData.versions) {
       console.log('No memory data available');
       return [];
     }
     
-    const memoryData = versionData.comparisons.map(comparison => ({
-      version: comparison.nodeVersion,
-      memoryOverhead: comparison.testResults
-        .filter(test => test.type === 'traditional')
-        .map(test => test.memoryOverheadBytes / 1024), // Convert to KB
-      memoryGrowth: comparison.testResults
-        .filter(test => test.type === 'traditional' && test.memoryOverheadBytes > 0)
-        .map(test => ({
-          size: test.name,
-          growth: test.memoryOverheadBytes / 1024 // Convert to KB
+    const memoryData = versionData.versions.map(version => ({
+      version: version.cleanVersion || version.version,
+      memoryOverhead: version.benchmarks
+        .map(benchmark => benchmark.memoryMB * 1024), // Convert MB to KB
+      memoryGrowth: version.benchmarks
+        .filter(benchmark => benchmark.memoryMB > 0)
+        .map(benchmark => ({
+          size: benchmark.name,
+          growth: benchmark.memoryMB * 1024 // Convert MB to KB
         })),
-      totalMemoryOverhead: comparison.totalMemoryOverheadBytes / 1024 // Convert to KB
+      totalMemoryOverhead: version.memoryOverheadMB * 1024 // Convert MB to KB
     }));
     
     console.log(`Loaded memory data for ${memoryData.length} versions`);
@@ -182,7 +178,7 @@ async function debugDataLoading(version) {
   
   try {
     const data = await loadVersionComparisonData();
-    const versionData = data.comparisons.find(c => c.nodeVersion === version);
+    const versionData = data.versions.find(v => (v.cleanVersion || v.version) === version);
     
     if (versionData) {
       console.log(`Found data for ${version}:`, versionData);

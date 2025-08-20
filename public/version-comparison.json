@@ -1,0 +1,1742 @@
+{
+  "generatedAt": "2025-08-20T13:24:24.309Z",
+  "versions": [
+    {
+      "version": "v16.20.2",
+      "cleanVersion": "16.20.2",
+      "iterations": 2,
+      "avgOverhead": -0.91,
+      "overheadStdDev": 2.35,
+      "overheadCV": 258.32,
+      "minOverhead": -5.85,
+      "maxOverhead": 1.83,
+      "avgNestedOverhead": 41.42,
+      "nestedOverheadStdDev": 101.2,
+      "nestedOverheadCV": 244.29,
+      "minNestedOverhead": -52.9,
+      "maxNestedOverhead": 199.23,
+      "memoryOverheadMB": 3.99,
+      "memoryOverheadStdDev": 6.04,
+      "memoryOverheadCV": 151.36,
+      "baselineTime": 2571.96,
+      "baselineMemory": 1.44,
+      "benchmarkCount": 12,
+      "testDate": "2025-08-20T13:20:48.283Z",
+      "benchmarks": [
+        {
+          "name": "Small Data",
+          "overhead": 0.42027509328877194,
+          "nestedOverhead": 195.25704011732242,
+          "memoryMB": 0,
+          "baselineTime": 2393.5268020000003,
+          "baselineMemory": 3
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -0.9070532982929624,
+          "nestedOverhead": -47.76778928567594,
+          "memoryMB": 0.375,
+          "baselineTime": 6876.1079549999995,
+          "baselineMemory": 0.125
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -5.7164063602995325,
+          "nestedOverhead": 151.86145067870683,
+          "memoryMB": 7.625,
+          "baselineTime": 1415.5753790000017,
+          "baselineMemory": 0.375
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": 1.83033489499405,
+          "nestedOverhead": -46.8837222561862,
+          "memoryMB": 0.125,
+          "baselineTime": 3451.5213130000047,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data",
+          "overhead": 0.9378035005753106,
+          "nestedOverhead": 47.49968026597139,
+          "memoryMB": 16,
+          "baselineTime": 533.4277379999985,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -0.996441917653367,
+          "nestedOverhead": -52.89635376418473,
+          "memoryMB": 0.625,
+          "baselineTime": 830.3689210000011,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Small Data",
+          "overhead": 0.49707220452539547,
+          "nestedOverhead": 199.2340197484729,
+          "memoryMB": -0.375,
+          "baselineTime": 2389.7890269999916,
+          "baselineMemory": 3
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -0.11715921717356315,
+          "nestedOverhead": -46.675135801762046,
+          "memoryMB": -0.875,
+          "baselineTime": 6723.5657510000165,
+          "baselineMemory": 1.625
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -5.84502287921111,
+          "nestedOverhead": 154.21879717672732,
+          "memoryMB": 7.5,
+          "baselineTime": 1417.0752229999925,
+          "baselineMemory": 0.5
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -0.9155368913752546,
+          "nestedOverhead": -48.69188725732078,
+          "memoryMB": 0,
+          "baselineTime": 3480.745047000004,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data",
+          "overhead": 0.9831088116825044,
+          "nestedOverhead": 44.42756525778764,
+          "memoryMB": 16,
+          "baselineTime": 534.7038839999877,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -1.0969842537193697,
+          "nestedOverhead": -52.49357932842303,
+          "memoryMB": 0.875,
+          "baselineTime": 817.1170160000038,
+          "baselineMemory": 0
+        }
+      ],
+      "baselineData": {
+        "avgExecutionTime": 2571.96,
+        "avgMemoryUsage": 1.44,
+        "executionTimeStdDev": 2131.43,
+        "memoryUsageStdDev": 1.2
+      },
+      "memoryAnalysis": {
+        "avgMemoryOverhead": 84406,
+        "maxConcurrentOps": 0,
+        "memoryAtMaxConcurrency": 0,
+        "leakDetected": false,
+        "iterationCount": 2
+      }
+    },
+    {
+      "version": "v18.19.1",
+      "cleanVersion": "18.19.1",
+      "iterations": 2,
+      "avgOverhead": -1.65,
+      "overheadStdDev": 1.75,
+      "overheadCV": 106.1,
+      "minOverhead": -5.14,
+      "maxOverhead": 0.52,
+      "avgNestedOverhead": 41.25,
+      "nestedOverheadStdDev": 101.73,
+      "nestedOverheadCV": 246.6,
+      "minNestedOverhead": -52.82,
+      "maxNestedOverhead": 199.82,
+      "memoryOverheadMB": -0.61,
+      "memoryOverheadStdDev": 7.5,
+      "memoryOverheadCV": 1224.49,
+      "baselineTime": 2590.21,
+      "baselineMemory": 4.82,
+      "benchmarkCount": 12,
+      "testDate": "2025-08-20T13:20:45.185Z",
+      "benchmarks": [
+        {
+          "name": "Small Data",
+          "overhead": 0.20953000990464038,
+          "nestedOverhead": 194.64992362689398,
+          "memoryMB": 3.69921875,
+          "baselineTime": 2426.4562399999995,
+          "baselineMemory": 3.125
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -0.44120530737938357,
+          "nestedOverhead": -47.69595940383658,
+          "memoryMB": -0.46484375,
+          "baselineTime": 6759.5073090000005,
+          "baselineMemory": 0.0390625
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -5.004047279865991,
+          "nestedOverhead": 159.14854360713335,
+          "memoryMB": 8.3359375,
+          "baselineTime": 1424.063863000003,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -0.7080210398381056,
+          "nestedOverhead": -48.17682225798434,
+          "memoryMB": 0.1171875,
+          "baselineTime": 3538.595690000002,
+          "baselineMemory": 0.03515625
+        },
+        {
+          "name": "Large Data",
+          "overhead": -2.232154509977186,
+          "nestedOverhead": 44.40980029719469,
+          "memoryMB": -16,
+          "baselineTime": 550.9848419999907,
+          "baselineMemory": 16
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -0.3620856416858673,
+          "nestedOverhead": -52.817722904178964,
+          "memoryMB": 0.375,
+          "baselineTime": 833.5516940000089,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Small Data",
+          "overhead": 0.5179559428741555,
+          "nestedOverhead": 199.8220770074727,
+          "memoryMB": 4.4921875,
+          "baselineTime": 2421.0659559999913,
+          "baselineMemory": 3
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -1.5341791011624097,
+          "nestedOverhead": -47.52696673043028,
+          "memoryMB": 0.23828125,
+          "baselineTime": 6851.760653000005,
+          "baselineMemory": 0.0703125
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -5.1368881058303755,
+          "nestedOverhead": 152.16324034433205,
+          "memoryMB": 8,
+          "baselineTime": 1422.1344420000096,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -1.2509421322715182,
+          "nestedOverhead": -47.311503216005356,
+          "memoryMB": -0.0390625,
+          "baselineTime": 3477.302337000001,
+          "baselineMemory": 0.2890625
+        },
+        {
+          "name": "Large Data",
+          "overhead": -2.3235246078860516,
+          "nestedOverhead": 41.05697215999825,
+          "memoryMB": -16,
+          "baselineTime": 552.3662610000174,
+          "baselineMemory": 16
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -1.477814318770178,
+          "nestedOverhead": -52.6791203265977,
+          "memoryMB": -0.10546875,
+          "baselineTime": 824.6847959999868,
+          "baselineMemory": 0
+        }
+      ],
+      "baselineData": {
+        "avgExecutionTime": 2590.21,
+        "avgMemoryUsage": 4.82,
+        "executionTimeStdDev": 2131.59,
+        "memoryUsageStdDev": 6.57
+      },
+      "memoryAnalysis": {
+        "avgMemoryOverhead": 86306.8,
+        "maxConcurrentOps": 0,
+        "memoryAtMaxConcurrency": 0,
+        "leakDetected": false,
+        "iterationCount": 2
+      }
+    },
+    {
+      "version": "v20.11.0",
+      "cleanVersion": "20.11.0",
+      "iterations": 2,
+      "avgOverhead": 0.34,
+      "overheadStdDev": 1.38,
+      "overheadCV": 410.13,
+      "minOverhead": -1.49,
+      "maxOverhead": 3.21,
+      "avgNestedOverhead": 49.28,
+      "nestedOverheadStdDev": 108.93,
+      "nestedOverheadCV": 221.04,
+      "minNestedOverhead": -51.78,
+      "maxNestedOverhead": 211.5,
+      "memoryOverheadMB": 5.08,
+      "memoryOverheadStdDev": 5.66,
+      "memoryOverheadCV": 111.38,
+      "baselineTime": 2499.2,
+      "baselineMemory": 0.52,
+      "benchmarkCount": 12,
+      "testDate": "2025-08-20T13:20:51.954Z",
+      "benchmarks": [
+        {
+          "name": "Small Data",
+          "overhead": 0.056804014730734084,
+          "nestedOverhead": 206.3361749968176,
+          "memoryMB": 2.30078125,
+          "baselineTime": 2308.896662,
+          "baselineMemory": 2.8359375
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": 0.03696439557779417,
+          "nestedOverhead": -46.30889320784929,
+          "memoryMB": 2.7109375,
+          "baselineTime": 6600.243185000001,
+          "baselineMemory": -0.20703125
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -0.748245614899517,
+          "nestedOverhead": 182.34242454602682,
+          "memoryMB": 9.19921875,
+          "baselineTime": 1294.7163079999991,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -1.487668032105685,
+          "nestedOverhead": -47.73255754389485,
+          "memoryMB": 2.1796875,
+          "baselineTime": 3477.009782000001,
+          "baselineMemory": -1.2890625
+        },
+        {
+          "name": "Large Data",
+          "overhead": 3.1057635603328215,
+          "nestedOverhead": 54.98434360732579,
+          "memoryMB": 16,
+          "baselineTime": 503.010506000006,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": 0.5703054212510874,
+          "nestedOverhead": -51.77936703939776,
+          "memoryMB": -1.1328125,
+          "baselineTime": 810.6138969999956,
+          "baselineMemory": 0.75
+        },
+        {
+          "name": "Small Data",
+          "overhead": 0.3354525606361078,
+          "nestedOverhead": 211.49799659288738,
+          "memoryMB": 2.16796875,
+          "baselineTime": 2303.6872890000004,
+          "baselineMemory": 2.80078125
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -0.7335166809952528,
+          "nestedOverhead": -46.52545464062984,
+          "memoryMB": 2.60546875,
+          "baselineTime": 6668.863881000001,
+          "baselineMemory": -0.40625
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -0.7396249458488922,
+          "nestedOverhead": 176.55851062479425,
+          "memoryMB": 8.12890625,
+          "baselineTime": 1294.3717020000004,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": 0.09598006667511666,
+          "nestedOverhead": -47.87012860335009,
+          "memoryMB": 0.80859375,
+          "baselineTime": 3422.2168349999993,
+          "baselineMemory": -0.30859375
+        },
+        {
+          "name": "Large Data",
+          "overhead": 3.2096147110287716,
+          "nestedOverhead": 51.08065488406335,
+          "memoryMB": 16,
+          "baselineTime": 505.1261119999981,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": 0.3499579608425838,
+          "nestedOverhead": -51.20436765490268,
+          "memoryMB": -0.0234375,
+          "baselineTime": 801.6442870000028,
+          "baselineMemory": -0.0546875
+        }
+      ],
+      "baselineData": {
+        "avgExecutionTime": 2499.2,
+        "avgMemoryUsage": 0.52,
+        "executionTimeStdDev": 2095.31,
+        "memoryUsageStdDev": 1.43
+      },
+      "memoryAnalysis": {
+        "avgMemoryOverhead": 52527.2,
+        "maxConcurrentOps": 0,
+        "memoryAtMaxConcurrency": 0,
+        "leakDetected": false,
+        "iterationCount": 2
+      }
+    },
+    {
+      "version": "v21.7.3",
+      "cleanVersion": "21.7.3",
+      "iterations": 2,
+      "avgOverhead": 0.47,
+      "overheadStdDev": 1.39,
+      "overheadCV": 293.29,
+      "minOverhead": -0.89,
+      "maxOverhead": 3.53,
+      "avgNestedOverhead": 49.14,
+      "nestedOverheadStdDev": 108.88,
+      "nestedOverheadCV": 221.56,
+      "minNestedOverhead": -52.5,
+      "maxNestedOverhead": 209.98,
+      "memoryOverheadMB": 5.07,
+      "memoryOverheadStdDev": 5.97,
+      "memoryOverheadCV": 117.93,
+      "baselineTime": 2496.8,
+      "baselineMemory": 0.43,
+      "benchmarkCount": 12,
+      "testDate": "2025-08-20T13:20:42.648Z",
+      "benchmarks": [
+        {
+          "name": "Small Data",
+          "overhead": 1.215659566802114,
+          "nestedOverhead": 209.97586831487976,
+          "memoryMB": 2.40625,
+          "baselineTime": 2298.885458,
+          "baselineMemory": 2.98046875
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -0.8014338160183089,
+          "nestedOverhead": -47.527942381801395,
+          "memoryMB": -1.2265625,
+          "baselineTime": 6690.368553,
+          "baselineMemory": 0.87109375
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -0.8908712125820943,
+          "nestedOverhead": 180.96103051893252,
+          "memoryMB": 8.25,
+          "baselineTime": 1290.8177790000009,
+          "baselineMemory": 0.125
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -0.5670228338475007,
+          "nestedOverhead": -47.63207065367034,
+          "memoryMB": 0.3359375,
+          "baselineTime": 3446.327172999998,
+          "baselineMemory": -1.046875
+        },
+        {
+          "name": "Large Data",
+          "overhead": 2.465935921095235,
+          "nestedOverhead": 54.64003540647313,
+          "memoryMB": 16.375,
+          "baselineTime": 498.74495500000194,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -0.10057675549500528,
+          "nestedOverhead": -52.242788888172655,
+          "memoryMB": 0.8359375,
+          "baselineTime": 802.0958679999967,
+          "baselineMemory": -0.4140625
+        },
+        {
+          "name": "Small Data",
+          "overhead": 1.078927382341323,
+          "nestedOverhead": 206.649133112971,
+          "memoryMB": 1.5625,
+          "baselineTime": 2300.506448,
+          "baselineMemory": 2.89453125
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": 1.3530865897146154,
+          "nestedOverhead": -46.001264982458174,
+          "memoryMB": -0.62890625,
+          "baselineTime": 6647.662144,
+          "baselineMemory": 0.53125
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -0.7235513176434413,
+          "nestedOverhead": 177.4118321086555,
+          "memoryMB": 9.74609375,
+          "baselineTime": 1290.7655300000006,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -0.46793281621041816,
+          "nestedOverhead": -47.49003189615583,
+          "memoryMB": 4.63671875,
+          "baselineTime": 3389.7693109999964,
+          "baselineMemory": -1.8515625
+        },
+        {
+          "name": "Large Data",
+          "overhead": 3.529789419661552,
+          "nestedOverhead": 53.48225417309437,
+          "memoryMB": 16.375,
+          "baselineTime": 499.139095999999,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -0.42438893586635146,
+          "nestedOverhead": -52.50085878009478,
+          "memoryMB": 2.125,
+          "baselineTime": 806.5306869999986,
+          "baselineMemory": -0.26171875
+        }
+      ],
+      "baselineData": {
+        "avgExecutionTime": 2496.8,
+        "avgMemoryUsage": 0.43,
+        "executionTimeStdDev": 2105.81,
+        "memoryUsageStdDev": 1.54
+      },
+      "memoryAnalysis": {
+        "avgMemoryOverhead": 102769.2,
+        "maxConcurrentOps": 0,
+        "memoryAtMaxConcurrency": 0,
+        "leakDetected": false,
+        "iterationCount": 2
+      }
+    },
+    {
+      "version": "v22.18.0",
+      "cleanVersion": "22.18.0",
+      "iterations": 2,
+      "avgOverhead": 0.23,
+      "overheadStdDev": 2.3,
+      "overheadCV": 991.99,
+      "minOverhead": -3.95,
+      "maxOverhead": 3,
+      "avgNestedOverhead": 47.21,
+      "nestedOverheadStdDev": 106.7,
+      "nestedOverheadCV": 225.99,
+      "minNestedOverhead": -52.91,
+      "maxNestedOverhead": 208.28,
+      "memoryOverheadMB": 4.4,
+      "memoryOverheadStdDev": 6.04,
+      "memoryOverheadCV": 137.49,
+      "baselineTime": 2520.12,
+      "baselineMemory": 0.85,
+      "benchmarkCount": 12,
+      "testDate": "2025-08-20T13:20:50.134Z",
+      "benchmarks": [
+        {
+          "name": "Small Data",
+          "overhead": 2.9746196449410998,
+          "nestedOverhead": 208.28421427525888,
+          "memoryMB": 4.78125,
+          "baselineTime": 2324.655225,
+          "baselineMemory": 2.98046875
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -0.5113461364981448,
+          "nestedOverhead": -46.57644443955354,
+          "memoryMB": -2.43359375,
+          "baselineTime": 6717.084094,
+          "baselineMemory": 2.21484375
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -3.949673337411365,
+          "nestedOverhead": 172.3569208670166,
+          "memoryMB": 7.77734375,
+          "baselineTime": 1339.295087999999,
+          "baselineMemory": 0.125
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -0.09978093607380778,
+          "nestedOverhead": -47.919943154336636,
+          "memoryMB": -0.14453125,
+          "baselineTime": 3451.9389530000044,
+          "baselineMemory": -0.1796875
+        },
+        {
+          "name": "Large Data",
+          "overhead": 2.4456466369943506,
+          "nestedOverhead": 54.63871540981465,
+          "memoryMB": 15.75,
+          "baselineTime": 498.0893730000025,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -0.5272338032324823,
+          "nestedOverhead": -52.45205372422844,
+          "memoryMB": 0.2109375,
+          "baselineTime": 807.2949749999971,
+          "baselineMemory": -0.18359375
+        },
+        {
+          "name": "Small Data",
+          "overhead": 2.999680174310305,
+          "nestedOverhead": 204.11518116493093,
+          "memoryMB": 3,
+          "baselineTime": 2321.6709100000003,
+          "baselineMemory": 2.77734375
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": 0.8861163283147251,
+          "nestedOverhead": -46.772616869382354,
+          "memoryMB": -0.19921875,
+          "baselineTime": 6723.371311000001,
+          "baselineMemory": 0.15234375
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -3.869132729397775,
+          "nestedOverhead": 168.15397462240068,
+          "memoryMB": 7.98046875,
+          "baselineTime": 1337.8395010000022,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -0.09021252951693737,
+          "nestedOverhead": -47.84713686730904,
+          "memoryMB": -0.41015625,
+          "baselineTime": 3417.4088859999974,
+          "baselineMemory": 0.07421875
+        },
+        {
+          "name": "Large Data",
+          "overhead": 2.842411559626306,
+          "nestedOverhead": 53.501082989913186,
+          "memoryMB": 16.125,
+          "baselineTime": 496.5203210000036,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -0.3231779126891956,
+          "nestedOverhead": -52.91420423455649,
+          "memoryMB": 0.3203125,
+          "baselineTime": 806.2794199999989,
+          "baselineMemory": -0.31640625
+        }
+      ],
+      "baselineData": {
+        "avgExecutionTime": 2520.12,
+        "avgMemoryUsage": 0.85,
+        "executionTimeStdDev": 2118.95,
+        "memoryUsageStdDev": 1.3
+      },
+      "memoryAnalysis": {
+        "avgMemoryOverhead": 81929.2,
+        "maxConcurrentOps": 0,
+        "memoryAtMaxConcurrency": 0,
+        "leakDetected": false,
+        "iterationCount": 2
+      }
+    },
+    {
+      "version": "v23.7.0",
+      "cleanVersion": "23.7.0",
+      "iterations": 2,
+      "avgOverhead": -4.91,
+      "overheadStdDev": 11.82,
+      "overheadCV": 240.81,
+      "minOverhead": -20.16,
+      "maxOverhead": 17.77,
+      "avgNestedOverhead": 36.45,
+      "nestedOverheadStdDev": 100.57,
+      "nestedOverheadCV": 275.93,
+      "minNestedOverhead": -54.07,
+      "maxNestedOverhead": 209.98,
+      "memoryOverheadMB": -2.2,
+      "memoryOverheadStdDev": 3.8,
+      "memoryOverheadCV": 172.52,
+      "baselineTime": 2641.58,
+      "baselineMemory": 4.17,
+      "benchmarkCount": 12,
+      "testDate": "2025-08-20T13:19:47.066Z",
+      "benchmarks": [
+        {
+          "name": "Small Data",
+          "overhead": 17.602194747983464,
+          "nestedOverhead": 209.7578350536159,
+          "memoryMB": 2.35546875,
+          "baselineTime": 2318.93595,
+          "baselineMemory": 2.9765625
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -4.273220665496298,
+          "nestedOverhead": -49.05834596999775,
+          "memoryMB": -0.05859375,
+          "baselineTime": 6944.881232,
+          "baselineMemory": 0.09765625
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -20.160622584189078,
+          "nestedOverhead": 123.08738652167321,
+          "memoryMB": -3.125,
+          "baselineTime": 1590.2705170000008,
+          "baselineMemory": 3.125
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -4.148635294411998,
+          "nestedOverhead": -49.42159747567589,
+          "memoryMB": -9.75,
+          "baselineTime": 3602.178003000001,
+          "baselineMemory": 9.75
+        },
+        {
+          "name": "Large Data",
+          "overhead": -14.470157600998002,
+          "nestedOverhead": 35.98565232776429,
+          "memoryMB": -3.125,
+          "baselineTime": 571.934448,
+          "baselineMemory": 3.125
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -2.632861508752822,
+          "nestedOverhead": -52.92790777052958,
+          "memoryMB": 0.1875,
+          "baselineTime": 833.8207660000044,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Small Data",
+          "overhead": 17.77384644093624,
+          "nestedOverhead": 209.98301580186305,
+          "memoryMB": 1.375,
+          "baselineTime": 2320.343868,
+          "baselineMemory": 4
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -4.084394560060284,
+          "nestedOverhead": -48.78751609672648,
+          "memoryMB": 0.13671875,
+          "baselineTime": 6891.530870999999,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -20.06676835745811,
+          "nestedOverhead": 126.8125129341156,
+          "memoryMB": -1.625,
+          "baselineTime": 1587.8356759999988,
+          "baselineMemory": 1.625
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -5.468309487918943,
+          "nestedOverhead": -49.711598542096155,
+          "memoryMB": -9.875,
+          "baselineTime": 3625.771373000003,
+          "baselineMemory": 9.875
+        },
+        {
+          "name": "Large Data",
+          "overhead": -14.629052839424627,
+          "nestedOverhead": 35.73139054994232,
+          "memoryMB": -3,
+          "baselineTime": 569.5578170000008,
+          "baselineMemory": 3
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -4.351484213336039,
+          "nestedOverhead": -54.065252025555274,
+          "memoryMB": 0.0859375,
+          "baselineTime": 841.8469699999987,
+          "baselineMemory": 0
+        }
+      ],
+      "baselineData": {
+        "avgExecutionTime": 2641.58,
+        "avgMemoryUsage": 4.17,
+        "executionTimeStdDev": 2159.83,
+        "memoryUsageStdDev": 3.19
+      },
+      "memoryAnalysis": {
+        "avgMemoryOverhead": 32649.6,
+        "maxConcurrentOps": 0,
+        "memoryAtMaxConcurrency": 0,
+        "leakDetected": false,
+        "iterationCount": 2
+      }
+    },
+    {
+      "version": "v24.6.0",
+      "cleanVersion": "24.6.0",
+      "iterations": 2,
+      "avgOverhead": -3.24,
+      "overheadStdDev": 15.43,
+      "overheadCV": 476.28,
+      "minOverhead": -20.52,
+      "maxOverhead": 28.21,
+      "avgNestedOverhead": 37.33,
+      "nestedOverheadStdDev": 101.63,
+      "nestedOverheadCV": 272.26,
+      "minNestedOverhead": -54.16,
+      "maxNestedOverhead": 211.53,
+      "memoryOverheadMB": -5.53,
+      "memoryOverheadStdDev": 13.56,
+      "memoryOverheadCV": 245.2,
+      "baselineTime": 2620.24,
+      "baselineMemory": 8.49,
+      "benchmarkCount": 12,
+      "testDate": "2025-08-20T13:20:50.531Z",
+      "benchmarks": [
+        {
+          "name": "Small Data",
+          "overhead": 27.99028342808578,
+          "nestedOverhead": 211.1300338499964,
+          "memoryMB": 1.36328125,
+          "baselineTime": 2306.3656809999998,
+          "baselineMemory": 2.76171875
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -2.8572647931968373,
+          "nestedOverhead": -46.96723153494769,
+          "memoryMB": 5.2734375,
+          "baselineTime": 6866.128140000001,
+          "baselineMemory": 0.25
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -20.523727308209516,
+          "nestedOverhead": 129.06895704808784,
+          "memoryMB": -3.125,
+          "baselineTime": 1581.736080999999,
+          "baselineMemory": 3.125
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -4.565177243755527,
+          "nestedOverhead": -49.739682369034625,
+          "memoryMB": -0.625,
+          "baselineTime": 3540.7922490000055,
+          "baselineMemory": 0.625
+        },
+        {
+          "name": "Large Data",
+          "overhead": -15.804311927734464,
+          "nestedOverhead": 34.32245473288851,
+          "memoryMB": -35.25,
+          "baselineTime": 562.8404159999991,
+          "baselineMemory": 35.375
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -3.1603765289324968,
+          "nestedOverhead": -54.16485142614352,
+          "memoryMB": 0,
+          "baselineTime": 827.3329700000031,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Small Data",
+          "overhead": 28.20659231597441,
+          "nestedOverhead": 211.52835707225327,
+          "memoryMB": 1.03515625,
+          "baselineTime": 2305.822333,
+          "baselineMemory": 3.21484375
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -4.1829960276848475,
+          "nestedOverhead": -49.19038270163095,
+          "memoryMB": 4.33984375,
+          "baselineTime": 6899.531558000001,
+          "baselineMemory": 0.20703125
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -20.522889739588738,
+          "nestedOverhead": 129.29427218008047,
+          "memoryMB": -3.25,
+          "baselineTime": 1581.8458030000002,
+          "baselineMemory": 3.25
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -4.809027341499944,
+          "nestedOverhead": -49.93867447275989,
+          "memoryMB": -0.625,
+          "baselineTime": 3581.753143999995,
+          "baselineMemory": 0.625
+        },
+        {
+          "name": "Large Data",
+          "overhead": -14.72853765017601,
+          "nestedOverhead": 36.69009675588034,
+          "memoryMB": -35.5,
+          "baselineTime": 560.2439899999954,
+          "baselineMemory": 35.5
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -3.91999146547356,
+          "nestedOverhead": -54.07757905449305,
+          "memoryMB": 0,
+          "baselineTime": 828.5122629999969,
+          "baselineMemory": 0
+        }
+      ],
+      "baselineData": {
+        "avgExecutionTime": 2620.24,
+        "avgMemoryUsage": 8.49,
+        "executionTimeStdDev": 2148.01,
+        "memoryUsageStdDev": 13.53
+      },
+      "memoryAnalysis": {
+        "avgMemoryOverhead": 5472,
+        "maxConcurrentOps": 0,
+        "memoryAtMaxConcurrency": 0,
+        "leakDetected": false,
+        "iterationCount": 2
+      }
+    }
+  ],
+  "performance": {
+    "overheadByVersion": [
+      {
+        "version": "v16.20.2",
+        "overhead": -0.9105008593882605,
+        "stdDev": 2.3520242907377082,
+        "cv": 258.32202863794834
+      },
+      {
+        "version": "v18.19.1",
+        "overhead": -1.6452813409906895,
+        "stdDev": 1.7456546208612087,
+        "cv": 106.10067575494904
+      },
+      {
+        "version": "v20.11.0",
+        "overhead": 0.3376489514354725,
+        "stdDev": 1.3847828973343128,
+        "cv": 410.1250400592333
+      },
+      {
+        "version": "v21.7.3",
+        "overhead": 0.4723017659959767,
+        "stdDev": 1.3852302296455936,
+        "cv": 293.29346815472076
+      },
+      {
+        "version": "v22.18.0",
+        "overhead": 0.23149307994725654,
+        "stdDev": 2.2963950757215255,
+        "cv": 991.9929685348421
+      },
+      {
+        "version": "v23.7.0",
+        "overhead": -4.909122160260541,
+        "stdDev": 11.821580928303487,
+        "cv": 240.80844889132038
+      },
+      {
+        "version": "v24.6.0",
+        "overhead": -3.2397853568493122,
+        "stdDev": 15.430530092611372,
+        "cv": 476.2824814918463
+      }
+    ],
+    "nestedOverheadByVersion": [
+      {
+        "version": "v16.20.2",
+        "overhead": 41.424173795952974,
+        "stdDev": 101.19545421042505,
+        "cv": 244.29082088370237
+      },
+      {
+        "version": "v18.19.1",
+        "overhead": 41.25353851699932,
+        "stdDev": 101.73205047896073,
+        "cv": 246.6019986068348
+      },
+      {
+        "version": "v20.11.0",
+        "overhead": 49.281611380157564,
+        "stdDev": 108.93351938257308,
+        "cv": 221.04293332103458
+      },
+      {
+        "version": "v21.7.3",
+        "overhead": 49.1437663377211,
+        "stdDev": 108.8825583318565,
+        "cv": 221.55924636220226
+      },
+      {
+        "version": "v22.18.0",
+        "overhead": 47.213974169997364,
+        "stdDev": 106.70038837143123,
+        "cv": 225.99323663635832
+      },
+      {
+        "version": "v23.7.0",
+        "overhead": 36.448797942366106,
+        "stdDev": 100.5724244413794,
+        "cv": 275.92795954590173
+      },
+      {
+        "version": "v24.6.0",
+        "overhead": 37.32964750668143,
+        "stdDev": 101.63244319584724,
+        "cv": 272.2566377774036
+      }
+    ],
+    "memoryByVersion": [
+      {
+        "version": "v16.20.2",
+        "memory": 3.9895833333333335,
+        "stdDev": 6.038819372172197,
+        "cv": 151.36466311449894
+      },
+      {
+        "version": "v18.19.1",
+        "memory": -0.6126302083333334,
+        "stdDev": 7.501599261411797,
+        "cv": 1224.4905914483018
+      },
+      {
+        "version": "v20.11.0",
+        "memory": 5.078776041666667,
+        "stdDev": 5.656833307152888,
+        "cv": 111.38182232773792
+      },
+      {
+        "version": "v21.7.3",
+        "memory": 5.066080729166667,
+        "stdDev": 5.974291179400783,
+        "cv": 117.92727946487955
+      },
+      {
+        "version": "v22.18.0",
+        "memory": 4.396484375,
+        "stdDev": 6.044714042940429,
+        "cv": 137.489719679498
+      },
+      {
+        "version": "v23.7.0",
+        "memory": -2.2014973958333335,
+        "stdDev": 3.7979647551237012,
+        "cv": 172.51734034807052
+      },
+      {
+        "version": "v24.6.0",
+        "memory": -5.5302734375,
+        "stdDev": 13.560015531416619,
+        "cv": 245.19611344111985
+      }
+    ]
+  },
+  "charts": {
+    "performanceChart": {
+      "labels": [
+        "16.20.2",
+        "18.19.1",
+        "20.11.0",
+        "21.7.3",
+        "22.18.0",
+        "23.7.0",
+        "24.6.0"
+      ],
+      "datasets": [
+        {
+          "label": "AsyncLocalStorage Overhead (%)",
+          "data": [
+            -0.91,
+            -1.65,
+            0.34,
+            0.47,
+            0.23,
+            -4.91,
+            -3.24
+          ],
+          "backgroundColor": "rgba(54, 162, 235, 0.2)",
+          "borderColor": "rgba(54, 162, 235, 1)",
+          "borderWidth": 1
+        },
+        {
+          "label": "Nested ALS Overhead (%)",
+          "data": [
+            41.42,
+            41.25,
+            49.28,
+            49.14,
+            47.21,
+            36.45,
+            37.33
+          ],
+          "backgroundColor": "rgba(255, 99, 132, 0.2)",
+          "borderColor": "rgba(255, 99, 132, 1)",
+          "borderWidth": 1
+        }
+      ]
+    },
+    "memoryChart": {
+      "labels": [
+        "16.20.2",
+        "18.19.1",
+        "20.11.0",
+        "21.7.3",
+        "22.18.0",
+        "23.7.0",
+        "24.6.0"
+      ],
+      "datasets": [
+        {
+          "label": "Memory Overhead (MB)",
+          "data": [
+            3.99,
+            -0.61,
+            5.08,
+            5.07,
+            4.4,
+            -2.2,
+            -5.53
+          ],
+          "backgroundColor": "rgba(75, 192, 192, 0.2)",
+          "borderColor": "rgba(75, 192, 192, 1)",
+          "borderWidth": 2,
+          "fill": false,
+          "tension": 0.1
+        }
+      ]
+    },
+    "versionComparisonChart": {
+      "labels": [
+        "16.20.2",
+        "18.19.1",
+        "20.11.0",
+        "21.7.3",
+        "22.18.0",
+        "23.7.0",
+        "24.6.0"
+      ],
+      "datasets": [
+        {
+          "label": "Performance Improvement (%)",
+          "data": [
+            0,
+            81.31868131868131,
+            -120.60606060606061,
+            -38.23529411764704,
+            51.06382978723404,
+            2234.7826086956525,
+            -34.0122199592668
+          ],
+          "backgroundColor": [
+            "rgba(76, 175, 80, 0.2)",
+            "rgba(76, 175, 80, 0.2)",
+            "rgba(244, 67, 54, 0.2)",
+            "rgba(244, 67, 54, 0.2)",
+            "rgba(76, 175, 80, 0.2)",
+            "rgba(76, 175, 80, 0.2)",
+            "rgba(244, 67, 54, 0.2)"
+          ],
+          "borderColor": [
+            "rgba(76, 175, 80, 1)",
+            "rgba(76, 175, 80, 1)",
+            "rgba(244, 67, 54, 1)",
+            "rgba(244, 67, 54, 1)",
+            "rgba(76, 175, 80, 1)",
+            "rgba(76, 175, 80, 1)",
+            "rgba(244, 67, 54, 1)"
+          ],
+          "borderWidth": 1
+        }
+      ]
+    }
+  },
+  "analysis": {
+    "bestPerformingVersion": {
+      "version": "v23.7.0",
+      "cleanVersion": "23.7.0",
+      "iterations": 2,
+      "avgOverhead": -4.91,
+      "overheadStdDev": 11.82,
+      "overheadCV": 240.81,
+      "minOverhead": -20.16,
+      "maxOverhead": 17.77,
+      "avgNestedOverhead": 36.45,
+      "nestedOverheadStdDev": 100.57,
+      "nestedOverheadCV": 275.93,
+      "minNestedOverhead": -54.07,
+      "maxNestedOverhead": 209.98,
+      "memoryOverheadMB": -2.2,
+      "memoryOverheadStdDev": 3.8,
+      "memoryOverheadCV": 172.52,
+      "baselineTime": 2641.58,
+      "baselineMemory": 4.17,
+      "benchmarkCount": 12,
+      "testDate": "2025-08-20T13:19:47.066Z",
+      "benchmarks": [
+        {
+          "name": "Small Data",
+          "overhead": 17.602194747983464,
+          "nestedOverhead": 209.7578350536159,
+          "memoryMB": 2.35546875,
+          "baselineTime": 2318.93595,
+          "baselineMemory": 2.9765625
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -4.273220665496298,
+          "nestedOverhead": -49.05834596999775,
+          "memoryMB": -0.05859375,
+          "baselineTime": 6944.881232,
+          "baselineMemory": 0.09765625
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -20.160622584189078,
+          "nestedOverhead": 123.08738652167321,
+          "memoryMB": -3.125,
+          "baselineTime": 1590.2705170000008,
+          "baselineMemory": 3.125
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -4.148635294411998,
+          "nestedOverhead": -49.42159747567589,
+          "memoryMB": -9.75,
+          "baselineTime": 3602.178003000001,
+          "baselineMemory": 9.75
+        },
+        {
+          "name": "Large Data",
+          "overhead": -14.470157600998002,
+          "nestedOverhead": 35.98565232776429,
+          "memoryMB": -3.125,
+          "baselineTime": 571.934448,
+          "baselineMemory": 3.125
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -2.632861508752822,
+          "nestedOverhead": -52.92790777052958,
+          "memoryMB": 0.1875,
+          "baselineTime": 833.8207660000044,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Small Data",
+          "overhead": 17.77384644093624,
+          "nestedOverhead": 209.98301580186305,
+          "memoryMB": 1.375,
+          "baselineTime": 2320.343868,
+          "baselineMemory": 4
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -4.084394560060284,
+          "nestedOverhead": -48.78751609672648,
+          "memoryMB": 0.13671875,
+          "baselineTime": 6891.530870999999,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -20.06676835745811,
+          "nestedOverhead": 126.8125129341156,
+          "memoryMB": -1.625,
+          "baselineTime": 1587.8356759999988,
+          "baselineMemory": 1.625
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -5.468309487918943,
+          "nestedOverhead": -49.711598542096155,
+          "memoryMB": -9.875,
+          "baselineTime": 3625.771373000003,
+          "baselineMemory": 9.875
+        },
+        {
+          "name": "Large Data",
+          "overhead": -14.629052839424627,
+          "nestedOverhead": 35.73139054994232,
+          "memoryMB": -3,
+          "baselineTime": 569.5578170000008,
+          "baselineMemory": 3
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -4.351484213336039,
+          "nestedOverhead": -54.065252025555274,
+          "memoryMB": 0.0859375,
+          "baselineTime": 841.8469699999987,
+          "baselineMemory": 0
+        }
+      ],
+      "baselineData": {
+        "avgExecutionTime": 2641.58,
+        "avgMemoryUsage": 4.17,
+        "executionTimeStdDev": 2159.83,
+        "memoryUsageStdDev": 3.19
+      },
+      "memoryAnalysis": {
+        "avgMemoryOverhead": 32649.6,
+        "maxConcurrentOps": 0,
+        "memoryAtMaxConcurrency": 0,
+        "leakDetected": false,
+        "iterationCount": 2
+      }
+    },
+    "worstPerformingVersion": {
+      "version": "v21.7.3",
+      "cleanVersion": "21.7.3",
+      "iterations": 2,
+      "avgOverhead": 0.47,
+      "overheadStdDev": 1.39,
+      "overheadCV": 293.29,
+      "minOverhead": -0.89,
+      "maxOverhead": 3.53,
+      "avgNestedOverhead": 49.14,
+      "nestedOverheadStdDev": 108.88,
+      "nestedOverheadCV": 221.56,
+      "minNestedOverhead": -52.5,
+      "maxNestedOverhead": 209.98,
+      "memoryOverheadMB": 5.07,
+      "memoryOverheadStdDev": 5.97,
+      "memoryOverheadCV": 117.93,
+      "baselineTime": 2496.8,
+      "baselineMemory": 0.43,
+      "benchmarkCount": 12,
+      "testDate": "2025-08-20T13:20:42.648Z",
+      "benchmarks": [
+        {
+          "name": "Small Data",
+          "overhead": 1.215659566802114,
+          "nestedOverhead": 209.97586831487976,
+          "memoryMB": 2.40625,
+          "baselineTime": 2298.885458,
+          "baselineMemory": 2.98046875
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": -0.8014338160183089,
+          "nestedOverhead": -47.527942381801395,
+          "memoryMB": -1.2265625,
+          "baselineTime": 6690.368553,
+          "baselineMemory": 0.87109375
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -0.8908712125820943,
+          "nestedOverhead": 180.96103051893252,
+          "memoryMB": 8.25,
+          "baselineTime": 1290.8177790000009,
+          "baselineMemory": 0.125
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -0.5670228338475007,
+          "nestedOverhead": -47.63207065367034,
+          "memoryMB": 0.3359375,
+          "baselineTime": 3446.327172999998,
+          "baselineMemory": -1.046875
+        },
+        {
+          "name": "Large Data",
+          "overhead": 2.465935921095235,
+          "nestedOverhead": 54.64003540647313,
+          "memoryMB": 16.375,
+          "baselineTime": 498.74495500000194,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -0.10057675549500528,
+          "nestedOverhead": -52.242788888172655,
+          "memoryMB": 0.8359375,
+          "baselineTime": 802.0958679999967,
+          "baselineMemory": -0.4140625
+        },
+        {
+          "name": "Small Data",
+          "overhead": 1.078927382341323,
+          "nestedOverhead": 206.649133112971,
+          "memoryMB": 1.5625,
+          "baselineTime": 2300.506448,
+          "baselineMemory": 2.89453125
+        },
+        {
+          "name": "Small Data + Async",
+          "overhead": 1.3530865897146154,
+          "nestedOverhead": -46.001264982458174,
+          "memoryMB": -0.62890625,
+          "baselineTime": 6647.662144,
+          "baselineMemory": 0.53125
+        },
+        {
+          "name": "Medium Data",
+          "overhead": -0.7235513176434413,
+          "nestedOverhead": 177.4118321086555,
+          "memoryMB": 9.74609375,
+          "baselineTime": 1290.7655300000006,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Medium Data + Async",
+          "overhead": -0.46793281621041816,
+          "nestedOverhead": -47.49003189615583,
+          "memoryMB": 4.63671875,
+          "baselineTime": 3389.7693109999964,
+          "baselineMemory": -1.8515625
+        },
+        {
+          "name": "Large Data",
+          "overhead": 3.529789419661552,
+          "nestedOverhead": 53.48225417309437,
+          "memoryMB": 16.375,
+          "baselineTime": 499.139095999999,
+          "baselineMemory": 0
+        },
+        {
+          "name": "Large Data + Async",
+          "overhead": -0.42438893586635146,
+          "nestedOverhead": -52.50085878009478,
+          "memoryMB": 2.125,
+          "baselineTime": 806.5306869999986,
+          "baselineMemory": -0.26171875
+        }
+      ],
+      "baselineData": {
+        "avgExecutionTime": 2496.8,
+        "avgMemoryUsage": 0.43,
+        "executionTimeStdDev": 2105.81,
+        "memoryUsageStdDev": 1.54
+      },
+      "memoryAnalysis": {
+        "avgMemoryOverhead": 102769.2,
+        "maxConcurrentOps": 0,
+        "memoryAtMaxConcurrency": 0,
+        "leakDetected": false,
+        "iterationCount": 2
+      }
+    },
+    "averageOverhead": -1.3814285714285717,
+    "overheadTrend": "improving",
+    "consistencyAnalysis": {
+      "mostConsistent": {
+        "version": "v18.19.1",
+        "cleanVersion": "18.19.1",
+        "iterations": 2,
+        "avgOverhead": -1.65,
+        "overheadStdDev": 1.75,
+        "overheadCV": 106.1,
+        "minOverhead": -5.14,
+        "maxOverhead": 0.52,
+        "avgNestedOverhead": 41.25,
+        "nestedOverheadStdDev": 101.73,
+        "nestedOverheadCV": 246.6,
+        "minNestedOverhead": -52.82,
+        "maxNestedOverhead": 199.82,
+        "memoryOverheadMB": -0.61,
+        "memoryOverheadStdDev": 7.5,
+        "memoryOverheadCV": 1224.49,
+        "baselineTime": 2590.21,
+        "baselineMemory": 4.82,
+        "benchmarkCount": 12,
+        "testDate": "2025-08-20T13:20:45.185Z",
+        "benchmarks": [
+          {
+            "name": "Small Data",
+            "overhead": 0.20953000990464038,
+            "nestedOverhead": 194.64992362689398,
+            "memoryMB": 3.69921875,
+            "baselineTime": 2426.4562399999995,
+            "baselineMemory": 3.125
+          },
+          {
+            "name": "Small Data + Async",
+            "overhead": -0.44120530737938357,
+            "nestedOverhead": -47.69595940383658,
+            "memoryMB": -0.46484375,
+            "baselineTime": 6759.5073090000005,
+            "baselineMemory": 0.0390625
+          },
+          {
+            "name": "Medium Data",
+            "overhead": -5.004047279865991,
+            "nestedOverhead": 159.14854360713335,
+            "memoryMB": 8.3359375,
+            "baselineTime": 1424.063863000003,
+            "baselineMemory": 0
+          },
+          {
+            "name": "Medium Data + Async",
+            "overhead": -0.7080210398381056,
+            "nestedOverhead": -48.17682225798434,
+            "memoryMB": 0.1171875,
+            "baselineTime": 3538.595690000002,
+            "baselineMemory": 0.03515625
+          },
+          {
+            "name": "Large Data",
+            "overhead": -2.232154509977186,
+            "nestedOverhead": 44.40980029719469,
+            "memoryMB": -16,
+            "baselineTime": 550.9848419999907,
+            "baselineMemory": 16
+          },
+          {
+            "name": "Large Data + Async",
+            "overhead": -0.3620856416858673,
+            "nestedOverhead": -52.817722904178964,
+            "memoryMB": 0.375,
+            "baselineTime": 833.5516940000089,
+            "baselineMemory": 0
+          },
+          {
+            "name": "Small Data",
+            "overhead": 0.5179559428741555,
+            "nestedOverhead": 199.8220770074727,
+            "memoryMB": 4.4921875,
+            "baselineTime": 2421.0659559999913,
+            "baselineMemory": 3
+          },
+          {
+            "name": "Small Data + Async",
+            "overhead": -1.5341791011624097,
+            "nestedOverhead": -47.52696673043028,
+            "memoryMB": 0.23828125,
+            "baselineTime": 6851.760653000005,
+            "baselineMemory": 0.0703125
+          },
+          {
+            "name": "Medium Data",
+            "overhead": -5.1368881058303755,
+            "nestedOverhead": 152.16324034433205,
+            "memoryMB": 8,
+            "baselineTime": 1422.1344420000096,
+            "baselineMemory": 0
+          },
+          {
+            "name": "Medium Data + Async",
+            "overhead": -1.2509421322715182,
+            "nestedOverhead": -47.311503216005356,
+            "memoryMB": -0.0390625,
+            "baselineTime": 3477.302337000001,
+            "baselineMemory": 0.2890625
+          },
+          {
+            "name": "Large Data",
+            "overhead": -2.3235246078860516,
+            "nestedOverhead": 41.05697215999825,
+            "memoryMB": -16,
+            "baselineTime": 552.3662610000174,
+            "baselineMemory": 16
+          },
+          {
+            "name": "Large Data + Async",
+            "overhead": -1.477814318770178,
+            "nestedOverhead": -52.6791203265977,
+            "memoryMB": -0.10546875,
+            "baselineTime": 824.6847959999868,
+            "baselineMemory": 0
+          }
+        ],
+        "baselineData": {
+          "avgExecutionTime": 2590.21,
+          "avgMemoryUsage": 4.82,
+          "executionTimeStdDev": 2131.59,
+          "memoryUsageStdDev": 6.57
+        },
+        "memoryAnalysis": {
+          "avgMemoryOverhead": 86306.8,
+          "maxConcurrentOps": 0,
+          "memoryAtMaxConcurrency": 0,
+          "leakDetected": false,
+          "iterationCount": 2
+        }
+      },
+      "leastConsistent": {
+        "version": "v22.18.0",
+        "cleanVersion": "22.18.0",
+        "iterations": 2,
+        "avgOverhead": 0.23,
+        "overheadStdDev": 2.3,
+        "overheadCV": 991.99,
+        "minOverhead": -3.95,
+        "maxOverhead": 3,
+        "avgNestedOverhead": 47.21,
+        "nestedOverheadStdDev": 106.7,
+        "nestedOverheadCV": 225.99,
+        "minNestedOverhead": -52.91,
+        "maxNestedOverhead": 208.28,
+        "memoryOverheadMB": 4.4,
+        "memoryOverheadStdDev": 6.04,
+        "memoryOverheadCV": 137.49,
+        "baselineTime": 2520.12,
+        "baselineMemory": 0.85,
+        "benchmarkCount": 12,
+        "testDate": "2025-08-20T13:20:50.134Z",
+        "benchmarks": [
+          {
+            "name": "Small Data",
+            "overhead": 2.9746196449410998,
+            "nestedOverhead": 208.28421427525888,
+            "memoryMB": 4.78125,
+            "baselineTime": 2324.655225,
+            "baselineMemory": 2.98046875
+          },
+          {
+            "name": "Small Data + Async",
+            "overhead": -0.5113461364981448,
+            "nestedOverhead": -46.57644443955354,
+            "memoryMB": -2.43359375,
+            "baselineTime": 6717.084094,
+            "baselineMemory": 2.21484375
+          },
+          {
+            "name": "Medium Data",
+            "overhead": -3.949673337411365,
+            "nestedOverhead": 172.3569208670166,
+            "memoryMB": 7.77734375,
+            "baselineTime": 1339.295087999999,
+            "baselineMemory": 0.125
+          },
+          {
+            "name": "Medium Data + Async",
+            "overhead": -0.09978093607380778,
+            "nestedOverhead": -47.919943154336636,
+            "memoryMB": -0.14453125,
+            "baselineTime": 3451.9389530000044,
+            "baselineMemory": -0.1796875
+          },
+          {
+            "name": "Large Data",
+            "overhead": 2.4456466369943506,
+            "nestedOverhead": 54.63871540981465,
+            "memoryMB": 15.75,
+            "baselineTime": 498.0893730000025,
+            "baselineMemory": 0
+          },
+          {
+            "name": "Large Data + Async",
+            "overhead": -0.5272338032324823,
+            "nestedOverhead": -52.45205372422844,
+            "memoryMB": 0.2109375,
+            "baselineTime": 807.2949749999971,
+            "baselineMemory": -0.18359375
+          },
+          {
+            "name": "Small Data",
+            "overhead": 2.999680174310305,
+            "nestedOverhead": 204.11518116493093,
+            "memoryMB": 3,
+            "baselineTime": 2321.6709100000003,
+            "baselineMemory": 2.77734375
+          },
+          {
+            "name": "Small Data + Async",
+            "overhead": 0.8861163283147251,
+            "nestedOverhead": -46.772616869382354,
+            "memoryMB": -0.19921875,
+            "baselineTime": 6723.371311000001,
+            "baselineMemory": 0.15234375
+          },
+          {
+            "name": "Medium Data",
+            "overhead": -3.869132729397775,
+            "nestedOverhead": 168.15397462240068,
+            "memoryMB": 7.98046875,
+            "baselineTime": 1337.8395010000022,
+            "baselineMemory": 0
+          },
+          {
+            "name": "Medium Data + Async",
+            "overhead": -0.09021252951693737,
+            "nestedOverhead": -47.84713686730904,
+            "memoryMB": -0.41015625,
+            "baselineTime": 3417.4088859999974,
+            "baselineMemory": 0.07421875
+          },
+          {
+            "name": "Large Data",
+            "overhead": 2.842411559626306,
+            "nestedOverhead": 53.501082989913186,
+            "memoryMB": 16.125,
+            "baselineTime": 496.5203210000036,
+            "baselineMemory": 0
+          },
+          {
+            "name": "Large Data + Async",
+            "overhead": -0.3231779126891956,
+            "nestedOverhead": -52.91420423455649,
+            "memoryMB": 0.3203125,
+            "baselineTime": 806.2794199999989,
+            "baselineMemory": -0.31640625
+          }
+        ],
+        "baselineData": {
+          "avgExecutionTime": 2520.12,
+          "avgMemoryUsage": 0.85,
+          "executionTimeStdDev": 2118.95,
+          "memoryUsageStdDev": 1.3
+        },
+        "memoryAnalysis": {
+          "avgMemoryOverhead": 81929.2,
+          "maxConcurrentOps": 0,
+          "memoryAtMaxConcurrency": 0,
+          "leakDetected": false,
+          "iterationCount": 2
+        }
+      },
+      "averageCV": 396.70285714285717
+    },
+    "recommendations": [
+      "✅ AsyncLocalStorage is generally safe to use in production with minimal overhead",
+      "🔧 Consider using Node.js v23.7.0 for optimal AsyncLocalStorage performance",
+      "⚠️ Avoid deeply nested AsyncLocalStorage contexts to minimize performance impact",
+      "📊 AsyncLocalStorage overhead is acceptable for most production workloads",
+      "📈 Consider increasing iterations for more reliable performance measurements"
+    ],
+    "insights": [
+      "AsyncLocalStorage performance varies by 5.38% between Node.js versions",
+      "Performance has generally improved in newer Node.js versions",
+      "5 version(s) show minimal AsyncLocalStorage overhead (<2%)",
+      "Performance shows high variability across iterations - consider running more iterations",
+      "Average of 2.0 iterations per version provides statistical confidence"
+    ]
+  }
+}
